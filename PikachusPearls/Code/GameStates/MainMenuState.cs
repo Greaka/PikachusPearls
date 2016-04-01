@@ -12,7 +12,7 @@ namespace PikachusPearls.Code.GameStates
             background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
         }
 
-        public GameState update()
+        public GameState Update()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
             {
@@ -22,12 +22,12 @@ namespace PikachusPearls.Code.GameStates
             return GameState.MainMenu;
         }
 
-        public void draw(RenderWindow win)
+        public void Draw(RenderWindow win)
         {
             //win.Draw(background);
         }
 
-        public void drawGUI(GUI gui)
+        public void DrawGUI(GUI gui)
         {
             gui.Draw(background);
         }

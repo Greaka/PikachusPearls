@@ -47,7 +47,7 @@ namespace PikachusPearls.Code
                 KeyboardInputManager.update();
 
                 if (currentGameState == GameState.InGame) { inGameFrameCount++; }
-                currentGameState = state.update();
+                currentGameState = state.Update();
 
                 if (currentGameState != prevGameState)
                 {
@@ -56,8 +56,8 @@ namespace PikachusPearls.Code
 
                 // gather drawStuff from State
                 win.Clear(new Color(100, 149, 237));    //cornflowerblue ftw!!! 1337
-                state.draw(win);
-                state.drawGUI(gui);
+                state.Draw(win);
+                state.DrawGUI(gui);
 
                 // check for window-events. e.g. window closed        
                 win.DispatchEvents();

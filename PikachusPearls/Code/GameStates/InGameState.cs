@@ -13,18 +13,18 @@ namespace PikachusPearls.Code.GameStates
             player = new Player(new Vector2f(10F, 10F));
         }
 
-        public GameState update()
+        public GameState Update()
         {
             player.update();
             return GameState.InGame;
         }
 
-        public void draw(RenderWindow win)
+        public void Draw(RenderWindow win)
         {
             player.draw(win);
         }
 
-        public void drawGUI(GUI gui)
+        public void DrawGUI(GUI gui)
         {
         }
     }
