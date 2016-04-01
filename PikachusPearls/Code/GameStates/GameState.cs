@@ -7,5 +7,6 @@
         MainMenu,
         InGame,
         Reset,
+        InFight
     }
 }
