@@ -46,7 +46,7 @@ namespace GameProject2D
                 KeyboardInputManager.update();
 
                 if (currentGameState == GameState.InGame) { inGameFrameCount++; }
-                currentGameState = state.update();
+                currentGameState = state.Update();
 
                 if (currentGameState != prevGameState)
                 {
@@ -55,8 +55,8 @@ namespace GameProject2D
 
                 // gather drawStuff from State
                 win.Clear(new Color(100, 149, 237));    //cornflowerblue ftw!!! 1337
-                state.draw(win, view);
-                state.drawGUI(gui);
+                state.Draw(win, view);
+                state.DrawGUI(gui);
 
                 // some DebugText
                 debugText.DisplayedString = "fps: " + (1.0F / gameTime.EllapsedTime.TotalSeconds);

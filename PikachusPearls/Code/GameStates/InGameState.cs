@@ -14,18 +14,18 @@ namespace GameProject2D
             player = new Player(new Vector2f(10F, 10F));
         }
 
-        public GameState update()
+        public GameState Update()
         {
             player.update();
             return GameState.InGame;
         }
 
-        public void draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win, View view)
         {
             player.draw(win, view);
         }
 
-        public void drawGUI(GUI gui)
+        public void DrawGUI(GUI gui)
         {
         }
     }

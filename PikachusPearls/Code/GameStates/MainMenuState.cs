@@ -12,7 +12,7 @@ namespace GameProject2D
             background = new Sprite(new Texture("Textures/MainMenu_Background.jpg"));
         }
 
-        public GameState update()
+        public GameState Update()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
             {
@@ -22,12 +22,12 @@ namespace GameProject2D
             return GameState.MainMenu;
         }
 
-        public void draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win, View view)
         {
             //win.Draw(background);
         }
 
-        public void drawGUI(GUI gui)
+        public void DrawGUI(GUI gui)
         {
             gui.Draw(background);
         }
