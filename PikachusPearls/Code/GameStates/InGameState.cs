@@ -19,9 +19,9 @@ namespace PikachusPearls.Code.GameStates
             return GameState.InGame;
         }
 
-        public void Draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win)
         {
-            player.draw(win, view);
+            player.draw(win);
         }
 
         public void DrawGUI(GUI gui)

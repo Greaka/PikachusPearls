@@ -19,16 +19,14 @@ namespace PikachusPearls.Code
         static IGameState state;
 
         static RenderWindow win;
-        static View view;
         static GUI gui;
 
         static void Main(string[] args)
         {
             // initialize window and view
             win = new RenderWindow(new VideoMode(800, 600), "Hadoken!!!");
-            view = new View();
             resetView();
-            gui = new GUI(win, view);
+            gui = new GUI(win);
 
             // exit Program, when window is being closed
             //win.Closed += new EventHandler(closeWindow);
@@ -58,7 +56,7 @@ namespace PikachusPearls.Code
 
                 // gather drawStuff from State
                 win.Clear(new Color(100, 149, 237));    //cornflowerblue ftw!!! 1337
-                state.Draw(win, view);
+                state.Draw(win);
                 state.DrawGUI(gui);
 
                 // check for window-events. e.g. window closed        
@@ -81,8 +79,6 @@ namespace PikachusPearls.Code
                                             (int) (1F/deltaTime);
                 win.Draw(debugText);
 
-                // do the actual drawing
-                win.SetView(view);
                 win.Display();
             }
         }
@@ -117,8 +113,8 @@ namespace PikachusPearls.Code
 
         static void resetView()
         {
-            view.Center = new Vector2(win.Size.X / 2F, win.Size.Y / 2F);
-            view.Size = new Vector2(win.Size.X, win.Size.Y);
+            win.GetView().Center = new Vector2(win.Size.X / 2F, win.Size.Y / 2F);
+            win.GetView().Size = new Vector2(win.Size.X, win.Size.Y);
         }
     }
 }

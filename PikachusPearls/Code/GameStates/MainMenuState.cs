@@ -22,7 +22,7 @@ namespace PikachusPearls.Code.GameStates
             return GameState.MainMenu;
         }
 
-        public void Draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win)
         {
             //win.Draw(background);
         }

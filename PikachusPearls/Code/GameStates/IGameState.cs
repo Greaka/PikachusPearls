@@ -5,7 +5,7 @@ namespace PikachusPearls.Code.GameStates
     interface IGameState
     {
         GameState Update();
-        void Draw(RenderWindow win, View view);
+        void Draw(RenderWindow win);
         void DrawGUI(GUI gui);
     }
 }

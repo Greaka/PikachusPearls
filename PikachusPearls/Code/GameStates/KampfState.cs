@@ -28,7 +28,7 @@ namespace PikachusPearls.Code.GameStates
             state = FightState.BeginAnimation;
         }
 
-        public void Draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win)
         {
             
         }
