@@ -1,4 +1,5 @@
-﻿using PikachusPearls.Code.GameStates;
+﻿using System;
+using PikachusPearls.Code.GameStates;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
@@ -7,6 +8,7 @@ namespace PikachusPearls.Code
 {
     class Program
     {
+        public static readonly float fixedFps = 120F;
         public static GameTime gameTime;
         public static int inGameFrameCount { get; private set; }
 
@@ -59,21 +61,29 @@ namespace PikachusPearls.Code
                 state.draw(win, view);
                 state.drawGUI(gui);
 
-                // some DebugText
-                debugText.DisplayedString = "fps: " + (1.0F / gameTime.EllapsedTime.TotalSeconds);
-                win.Draw(debugText);
-
-                // do the actual drawing
-                win.SetView(view);
-                win.Display();
-
                 // check for window-events. e.g. window closed        
                 win.DispatchEvents();
 
                 // update GameTime
                 gameTime.Update();
-                int waitTime = (int)((1F / 60F) * 1000F - gameTime.EllapsedTime.Milliseconds);
-                System.Threading.Thread.Sleep(waitTime >= 0 ? waitTime : 0);
+                float deltaTime = (float)gameTime.EllapsedTime.TotalSeconds;
+
+                // idleLoop for fixed FrameRate
+                float deltaPlusIdleTime = deltaTime;
+                while (deltaPlusIdleTime < (1F / fixedFps))
+                {
+                    gameTime.Update();
+                    deltaPlusIdleTime += (float)gameTime.EllapsedTime.TotalSeconds;
+                }
+
+                //some fps Debug
+                debugText.DisplayedString = "real fps: " + (int) (1F/deltaPlusIdleTime) + ", theo fps: " +
+                                            (int) (1F/deltaTime);
+                win.Draw(debugText);
+
+                // do the actual drawing
+                win.SetView(view);
+                win.Display();
             }
         }
 
