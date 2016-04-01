@@ -9,7 +9,7 @@ namespace PikachusPearls.Code
         RenderWindow win;
         View view { get { return win.GetView(); } }
 
-        public GUI(RenderWindow win, View view)
+        public GUI(RenderWindow win)
         {
             this.win = win;
         }
