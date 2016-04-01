@@ -9,7 +9,7 @@ namespace PikachusPearls.Code.GameStates
 
         public MainMenuState()
         {
-            background = new Sprite(new Texture("Textures/MainMenu_Background.jpg"));
+            background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
         }
 
         public GameState update()
