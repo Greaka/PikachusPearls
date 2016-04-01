@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RuneShift.Code.Utility
+namespace PikachusPearls.Code.Utility
 {
     struct Vector2
     {

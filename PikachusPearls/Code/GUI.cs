@@ -1,8 +1,7 @@
-﻿using SFML.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SFML.Graphics;
 
-namespace GameProject2D
+namespace PikachusPearls.Code
 {
     class GUI
     {

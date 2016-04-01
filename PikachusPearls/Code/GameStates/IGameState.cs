@@ -1,6 +1,6 @@
 ﻿using SFML.Graphics;
 
-namespace GameProject2D
+namespace PikachusPearls.Code.GameStates
 {
     interface IGameState
     {

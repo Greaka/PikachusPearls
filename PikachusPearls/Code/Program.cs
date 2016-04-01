@@ -1,8 +1,9 @@
-﻿using SFML.Graphics;
+﻿using PikachusPearls.Code.GameStates;
+using PikachusPearls.Code.Utility;
+using SFML.Graphics;
 using SFML.Window;
-using System;
 
-namespace GameProject2D
+namespace PikachusPearls.Code
 {
     class Program
     {
