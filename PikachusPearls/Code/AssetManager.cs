@@ -18,8 +18,8 @@ namespace PikachusPearls.Code
 
         static void LoadTextures()
         {
-            textures.Add(TextureName.WhitePixel, new Texture("Assets/Textures/pixel.png"));
-            textures.Add(TextureName.MainMenuBackground, new Texture("Assets/Textures/Background.png"));
+            textures.Add(TextureName.WhitePixel, new Texture("Textures/pixel.png"));
+            textures.Add(TextureName.MainMenuBackground, new Texture("Textures/MainMenu_Background.jpg"));
 
         }
 
