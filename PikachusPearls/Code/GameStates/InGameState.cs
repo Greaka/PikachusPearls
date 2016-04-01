@@ -1,9 +1,8 @@
-﻿using System;
-using SFML;
+﻿using PikachusPearls.Code.GameStates.IngameElements;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace GameProject2D
+namespace PikachusPearls.Code.GameStates
 {
     class InGameState : IGameState
     {

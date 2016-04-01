@@ -1,29 +1,32 @@
 ﻿using System.Collections.Generic;
 using SFML.Graphics;
 
-public class AssetManager
+namespace PikachusPearls.Code
 {
-    static Dictionary<TextureName, Texture> textures = new Dictionary<TextureName, Texture>();
-
-    public static Texture getTexture(TextureName textureName)
+    public class AssetManager
     {
-        if (textures.Count == 0)
+        static Dictionary<TextureName, Texture> textures = new Dictionary<TextureName, Texture>();
+
+        public static Texture getTexture(TextureName textureName)
         {
-            LoadTextures();
+            if (textures.Count == 0)
+            {
+                LoadTextures();
+            }
+            return textures[textureName];
         }
-        return textures[textureName];
-    }
 
-    static void LoadTextures()
-    {
-        textures.Add(TextureName.WhitePixel, new Texture("Assets/Textures/pixel.png"));
-        textures.Add(TextureName.MainMenuBackground, new Texture("Assets/Textures/Background.png"));
+        static void LoadTextures()
+        {
+            textures.Add(TextureName.WhitePixel, new Texture("Assets/Textures/pixel.png"));
+            textures.Add(TextureName.MainMenuBackground, new Texture("Assets/Textures/Background.png"));
 
-    }
+        }
 
-    public enum TextureName
-    {
-        WhitePixel,
-        MainMenuBackground,
+        public enum TextureName
+        {
+            WhitePixel,
+            MainMenuBackground,
+        }
     }
 }
