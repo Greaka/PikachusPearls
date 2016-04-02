@@ -9,7 +9,6 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 {
     class T_Rex : Pearlmon
     {
-
         public T_Rex(uint level)
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexBack));
@@ -21,10 +20,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             Speed = 10;
             Lvl = level;
             Exp = 10;
-            CountOfKnownAttacks = 4;
             Typing = new Typing(Typing.Type.Strength);
-            
-
-       }
+            Attacks[0] = new Headbutt();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
     }
 }
