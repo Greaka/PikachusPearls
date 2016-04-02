@@ -90,7 +90,7 @@ namespace PikachusPearls.Code
                 //some fps Debug
                 debugText.DisplayedString = "real fps: " + (int) (1F/deltaPlusIdleTime) + ", theo fps: " +
                                             (int) (1F/deltaTime);
-                win.Draw(debugText);
+                gui.Draw(debugText);
 
                 win.Display();
             }

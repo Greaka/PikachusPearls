@@ -109,6 +109,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             var down = false;
             var left = false;
             var right = false;
+            var animation = playerSprite.upperLeftCorner;
             if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
             {
                 if (map.IsWalkable(actualTile + (Vector2i) Vector2.Up))
@@ -116,7 +117,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     up = true;
                     direction = Direction.up;
                 }
-                playerSprite.upperLeftCorner = new Vector2i(0, 96);
+                animation = new Vector2i(0, 96);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
             {
@@ -125,7 +126,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     down = true;
                     direction = Direction.down;
                 }
-                playerSprite.upperLeftCorner = new Vector2i(0, 0);
+                animation = new Vector2i(0, 0);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
@@ -134,7 +135,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     left = true;
                     direction = Direction.left;
                 }
-                playerSprite.upperLeftCorner = new Vector2i(0, 288);
+                animation = new Vector2i(0, 288);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
@@ -143,7 +144,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     right = true;
                     direction = Direction.right;
                 }
-                playerSprite.upperLeftCorner = new Vector2i(0, 192);
+                animation = new Vector2i(0, 192);
             }
 
             if (up || down || left || right)
@@ -167,6 +168,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     break;
             }
 
+            playerSprite.upperLeftCorner = animation;
             moveDirection = direction;
         }
 
