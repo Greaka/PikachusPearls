@@ -26,7 +26,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.2f, 3, new Vector2i(64, 96))
             {
-                Position = new Vector2(20, 17) * 64
+                Position = position
             };
             playerSprite.stopAnimation();
         }
@@ -100,10 +100,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void Draw(RenderWindow win)
         {
-            View v = win.GetView();
-
             win.Draw(playerSprite);
-            win.GetView().Center = playerSprite.Position;
+            View v = win.GetView();
+            v.Center = playerSprite.Position;
+            win.SetView(v);
         }
     }
 }
