@@ -55,6 +55,8 @@ namespace PikachusPearls.Code
 
             while (running && win.IsOpen())
             {
+                View v = win.GetView();
+
                 windowPosition = win.Position;
                 KeyboardInputManager.Update();
 
