@@ -16,12 +16,14 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
     public class Player
     {
+        private Map map;
         AnimatedSprite playerSprite;
         Texture playerTex;
         Pearlmon[] Pearlmons;
         private bool _inAnimation;
         private GameTime temp;
         readonly Vector2 posOffset = new Vector2(-32f, -48f);
+        private Vector2i actualTile;
 
         private bool inAnimation
         {
@@ -43,13 +45,15 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         private Direction moveDirection = Direction.none;
 
-        public Player(Vector2f position)
+        public Player(Map _map, Vector2f tilePosition)
         {
+            actualTile = (Vector2) tilePosition;
             playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.2f, 3, new Vector2i(64, 96))
             {
-                Position = position + (Vector2f) posOffset
+                Position = tilePosition * 64 + (Vector2f) posOffset
             };
             inAnimation = false;
+            map = _map;
         }
 
         public Pearlmon GetFirstMon()
@@ -92,6 +96,9 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
                 playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
+
+                if ((((Vector2) playerSprite.Position - posOffset)/64) != actualTile)
+                    inAnimation = false;
             }
         }
 
@@ -104,27 +111,38 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             var right = false;
             if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
             {
-                up = true;
-                direction = Direction.up;
+                if (map.IsWalkable(actualTile + (Vector2i) Vector2.Up))
+                {
+                    up = true;
+                    direction = Direction.up;
+                }
                 playerSprite.upperLeftCorner = new Vector2i(0, 96);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
             {
-                down = true;
-                direction = Direction.down;
-
+                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Down))
+                {
+                    down = true;
+                    direction = Direction.down;
+                }
                 playerSprite.upperLeftCorner = new Vector2i(0, 0);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
-                left = true;
-                direction = Direction.left;
+                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Left))
+                {
+                    left = true;
+                    direction = Direction.left;
+                }
                 playerSprite.upperLeftCorner = new Vector2i(0, 288);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
-                right = true;
-                direction = Direction.right;
+                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Up))
+                {
+                    right = true;
+                    direction = Direction.right;
+                }
                 playerSprite.upperLeftCorner = new Vector2i(0, 192);
             }
 
