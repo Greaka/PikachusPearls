@@ -45,8 +45,7 @@ namespace PikachusPearls.Code.GameStates
             }
             else
             {
-                map.Draw(win);
-                player.Draw(win);
+                map.Draw(win, player.Draw());
             }
         }
 

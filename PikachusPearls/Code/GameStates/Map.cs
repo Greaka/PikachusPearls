@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.Window;
 using System.Drawing;
+using PikachusPearls.Code.GameStates.IngameElements;
 
 namespace PikachusPearls.Code.GameStates
 {
@@ -193,9 +194,12 @@ namespace PikachusPearls.Code.GameStates
             }
         }
 
-        public void Draw(RenderWindow window)
+        public void Draw(RenderWindow window, Sprite player)
         {
             Vector2f viewCenter = window.GetView().Center;
+
+            
+
             int viewLeft = (int)(window.GetView().Size.X /128 + 2);
             int viewBottom = (int)(window.GetView().Size.Y / 128  + 2);
 
@@ -209,7 +213,7 @@ namespace PikachusPearls.Code.GameStates
             {
                 for (int j = top; j < bottom; j++)
                 {
-                    map[i, j].Draw(window);                   
+                    map[i, j].Draw(window);      
                 }
             }
         }
