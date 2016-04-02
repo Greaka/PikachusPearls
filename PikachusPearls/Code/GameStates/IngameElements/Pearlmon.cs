@@ -35,6 +35,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             return Attacks[index];
         }
 
+        public void BeAttackedByWith(Attack attack, Pearlmon opponent)
+        {
+
+        }
+
         protected void Rename(string newName)
         {
             Name = newName;
