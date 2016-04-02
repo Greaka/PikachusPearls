@@ -32,68 +32,68 @@ namespace PikachusPearls.Code.GameStates
                         {
                             case 0:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_bottom.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterBottom)); 
                                     
                                     break;
                                 }
                             case 1:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_bottomLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterBottomLeft));
                                     break;
                                 }
                             case 2:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_bottomRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterBottomRight));
                                     break;
                                 }
                             case 3:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_innerBottomLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterInnerBottomLeft));
                                     break;
                                 }
                             case 4:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_innerBottomRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterInnerBottomRight)); 
                                     break;
                                 }
                             case 5:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_innerTopLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterInnerTopLeft)); 
                                     break;
                                 }
                             case 6:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_innerTopRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterInnerTopRight)); 
                                     break;
                                 }
                             case 7:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_left.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterLeft)); 
                                     break;
                                 }
                             case 8:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_middle.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterMiddle)); 
                                     break;
                                 }
                             case 9:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_right.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterRight));
                                     break;
                                 }
                             case 10:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_top.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterTop)); 
                                     break;
                                 }
                             case 11:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_topLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterTopLeft)); 
                                     break;
                                 }
                             case 12:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/water_topRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.WaterTopRight)); 
                                     break;
                                 }
                         }
@@ -107,47 +107,47 @@ namespace PikachusPearls.Code.GameStates
                         {
                             case 0:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_bottom.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandBottom)); 
                                     break;
                                 }
                             case 1:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_bottomLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandBottomLeft)); 
                                     break;
                                 }
                             case 2:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_bottomRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandBottomRight));
                                     break;
                                 }
                             case 3:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_left.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandLeft));
                                     break;
                                 }
                             case 4:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_middle.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandMiddle)); 
                                     break;
                                 }
                             case 5:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_right.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandRight)); 
                                     break;
                                 }
                             case 6:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_top.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandTop)); 
                                     break;
                                 }
                             case 7:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_topLeft.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandTopLeft)); 
                                     break;
                                 }
                             case 8:
                                 {
-                                    tileSprite = new Sprite(new Texture("Textures/sand_topRight.png"));
+                                    tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SandTopRight));
                                     break;
                                 }
                         }
@@ -156,21 +156,21 @@ namespace PikachusPearls.Code.GameStates
 
                 case 2:
                     {
-                        tileSprite = new Sprite(new Texture("Textures/tree.png"));
+                        tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.Tree)); 
                         walkable = false;
                         break;
                     }
 
                 case 3:
                     {
-                        tileSprite = new Sprite(new Texture("Textures/grass_high.png"));
+                        tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.GrassHigh));
                         walkable = true;
                         break;
                     }
 
                 case 4:
                     {
-                        tileSprite = new Sprite(new Texture("Textures/grass_plain.png"));
+                        tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.GrassPlain));
                         walkable = true;
                         break;
                     }
