@@ -35,7 +35,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             return Attacks[index];
         }
 
-        public void BeAttackedByWith(Attack attack, Pearlmon opponent)
+        public void BeAttackedByWith(Pearlmon opponent, Attack attack)
         {
 
         }

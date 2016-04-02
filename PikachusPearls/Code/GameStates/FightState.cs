@@ -10,6 +10,8 @@ namespace PikachusPearls.Code.GameStates
 {
     class FightState
     {
+        Random rand = new Random();
+
         public enum EFightState
         {
             None = -1,
@@ -263,7 +265,33 @@ namespace PikachusPearls.Code.GameStates
             }
             if (phase == Phase.Execute)
             {
+                if(playersMon.Speed > enemyMon.Speed)
+                {
+                    enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                    playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                }
+                if(playersMon.Speed < enemyMon.Speed)
+                {
+                    playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                    enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                }
+                if(playersMon.Speed == enemyMon.Speed)
+                {
+                    
+                    int i = rand.Next(0, 1);
+                    if(i == 0)
+                    {
+                        enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                        playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                    }
+                    else
+                    {
+                        playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                        enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                    }
+                }
 
+                EnterFetch();
             }
             if (phase == Phase.None)
                 EndFight();
@@ -274,6 +302,9 @@ namespace PikachusPearls.Code.GameStates
             phase = Phase.Fetch;
             selected = Selected.Attack;
             selectedMenu = FetchMenu.Menu;
+
+            playerAttackBuffer = null;
+            enemyAttackBuffer = null;
         }
 
         void EnterAttacks()
