@@ -29,6 +29,8 @@ namespace PikachusPearls.Code.GameStates
             }
         }
 
+        public bool IsWalkable(int x, int y) => map[x, y].getWalkable();
+
         public Map(Bitmap mask)
         {
 
