@@ -229,7 +229,7 @@ namespace PikachusPearls.Code.GameStates
         {
             Vector2f viewCenter = window.GetView().Center;
 
-            //hi
+            
 
             int viewLeft = (int)(window.GetView().Size.X / 128 + 2);
             int viewBottom = (int)(window.GetView().Size.Y / 128 + 2);
