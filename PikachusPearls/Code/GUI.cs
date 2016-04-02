@@ -29,6 +29,21 @@ namespace PikachusPearls.Code
             win.Draw(spriteCopy);
         }
 
+        public void Draw(Sprite sprite, RenderStates state)
+        {
+            // work on a copy, instead of the original, for the original could be reused outside this scope
+            Sprite spriteCopy = new Sprite(sprite);
+
+            // modify sprite, to fit it in the gui
+            float viewScale = (float)view.Size.X / win.Size.X;
+
+            spriteCopy.Scale *= viewScale;
+            spriteCopy.Position = view.Center - view.Size / 2F + spriteCopy.Position * viewScale;
+
+            // draw the sprite
+            win.Draw(spriteCopy, state);
+        }
+
         public void Draw(Text text)
         {
             // work on a copy, instead of the original, for the original could be reused outside this scope

@@ -10,7 +10,7 @@ namespace PikachusPearls.Code
         private static bool[] previousKeyIsPressed;
         private static bool[] currentKeyIsPressed;
 
-        private static void initialize()
+        private static void Initialize()
         {
             keyCount = (int)Keyboard.Key.KeyCount;
             previousKeyIsPressed = new bool[keyCount];
@@ -19,9 +19,9 @@ namespace PikachusPearls.Code
             isInitialized = true;
         }
 
-        public static void update()
+        public static void Update()
         {
-            if (!isInitialized) { initialize(); }
+            if (!isInitialized) { Initialize(); }
 
             for (int i = 0; i < keyCount; ++i)
             {
@@ -30,7 +30,7 @@ namespace PikachusPearls.Code
             }
         }
 
-        public static bool isPressed(Keyboard.Key key)
+        public static bool IsPressed(Keyboard.Key key)
         {
             return currentKeyIsPressed[(int)key];
         }
@@ -38,9 +38,9 @@ namespace PikachusPearls.Code
         /// <summary>returns true, if the key is pressed this frame and was not pressed previous frame</summary>
         /// <param name="key">Key to be evaluated</param>
         /// <returns>returns true, if the key is pressed this frame and was not pressed previous frame</returns>
-        public static bool downward(Keyboard.Key key)
+        public static bool Downward(Keyboard.Key key)
         {
-            if (!isInitialized) { initialize(); }
+            if (!isInitialized) { Initialize(); }
 
             return !previousKeyIsPressed[(int)key] && currentKeyIsPressed[(int)key];
         }
@@ -48,9 +48,9 @@ namespace PikachusPearls.Code
         /// <summary>returns true, if the key is not pressed this frame and was pressed previous frame</summary>
         /// <param name="key">Key to be evaluated</param>
         /// <returns>returns true, if the key is not pressed this frame and was pressed previous frame</returns>
-        public static bool upward(Keyboard.Key key)
+        public static bool Upward(Keyboard.Key key)
         {
-            if (!isInitialized) { initialize(); }
+            if (!isInitialized) { Initialize(); }
 
             return previousKeyIsPressed[(int)key] && !currentKeyIsPressed[(int)key];
         }

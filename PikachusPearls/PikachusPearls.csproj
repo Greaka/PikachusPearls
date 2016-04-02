@@ -60,7 +60,7 @@
     <Compile Include="Code\GameStates\IngameElements\Pearlmon.cs" />
     <Compile Include="Code\GameStates\InGameState.cs" />
     <Compile Include="Code\GameStates\IngameElements\Player.cs" />
-    <Compile Include="Code\GameStates\KampfState.cs" />
+    <Compile Include="Code\GameStates\FightState.cs" />
     <Compile Include="Code\GameStates\MainMenuState.cs" />
     <Compile Include="Code\GUI.cs" />
     <Compile Include="Code\Utility\GameTime.cs" />
@@ -74,6 +74,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Fonts\calibri.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Shaders\SelectedShader.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -96,10 +99,22 @@
     <Content Include="sfmlnet-audio-2.dll" />
     <Content Include="sfmlnet-graphics-2.dll" />
     <Content Include="sfmlnet-window-2.dll" />
+    <Content Include="Textures\AttackButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\ItemsButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\MainMenu_Background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\PearlmonButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\pixel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\RunButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
