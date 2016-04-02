@@ -47,9 +47,7 @@ namespace PikachusPearls.Code.GameStates
             Attack1,
             Attack2,
             Attack3,
-            Attack4,
-
-            Count
+            Attack4
         }
 
         enum FetchMenu
@@ -178,7 +176,7 @@ namespace PikachusPearls.Code.GameStates
             {
                 if (enemyAttackBuffer == null)
                 {
-                    //enemyAttackBuffer = enemyMon.getRandomAttack();
+                    enemyAttackBuffer = enemyMon.GetRandomAttack();
                 }
 
                 if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Down))
@@ -242,9 +240,7 @@ namespace PikachusPearls.Code.GameStates
                             switch (selected)
                             {
                                 case Selected.Attack:
-                                    selectedMenu = FetchMenu.Attacks;
-                                    selectedAttack = SelectedAttack.Attack1;
-                                    selected = Selected.Attack;
+                                    EnterAttacks();
                                     break;
 
                                 default:
@@ -253,7 +249,8 @@ namespace PikachusPearls.Code.GameStates
                             break;
 
                         case FetchMenu.Attacks:
-
+                            playerAttackBuffer = playersMon.GetAttack((int)selectedAttack);
+                            EnterExecute();
                             break;
 
                         default:
@@ -262,7 +259,7 @@ namespace PikachusPearls.Code.GameStates
                 }
 
                 selected = (Selected)((int)selected % (int)Selected.Count);
-                selectedAttack = (SelectedAttack)((int)selectedAttack % (int)SelectedAttack.Count);
+                selectedAttack = (SelectedAttack)((int)selectedAttack % playersMon.CountOfKnownAttacks);
             }
             if (phase == Phase.Execute)
             {
@@ -270,6 +267,34 @@ namespace PikachusPearls.Code.GameStates
             }
             if (phase == Phase.None)
                 EndFight();
+        }
+
+        void EnterFetch()
+        {
+            phase = Phase.Fetch;
+            selected = Selected.Attack;
+            selectedMenu = FetchMenu.Menu;
+        }
+
+        void EnterAttacks()
+        {
+            selectedMenu = FetchMenu.Attacks;
+            selectedAttack = SelectedAttack.Attack1;
+            selected = Selected.Attack;
+        }
+
+        void ExitAttacks()
+        {
+            selectedAttack = SelectedAttack.None;
+            selectedMenu = FetchMenu.Menu;
+        }
+
+        void EnterExecute()
+        {
+            ExitAttacks();
+            selectedMenu = FetchMenu.None;
+            selected = Selected.None;
+            phase = Phase.Execute;
         }
 
         void EndFight()
