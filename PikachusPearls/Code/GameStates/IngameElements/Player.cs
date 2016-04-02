@@ -21,7 +21,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void draw(RenderWindow win)
         {
-            win.Draw(playerSprite);
+            //win.Draw(playerSprite);
         }
     }
 }
