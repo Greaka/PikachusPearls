@@ -27,4 +27,35 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             win.Draw(text);
         }
     }
+
+    public class Bite : Attack
+    {
+        public Bite()
+        {
+            Name = "Bite";
+            Strength = 15;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Headbutt : Attack
+    {
+        public Headbutt()
+        {
+            Name = "Headbutt";
+            Strength = 15;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Scratch : Attack
+    {
+        public Scratch()
+        {
+            Name = "Scratch";
+            Strength = 15;
+            Type = Typing.Type.Normal;
+        }
+    }
+
 }
