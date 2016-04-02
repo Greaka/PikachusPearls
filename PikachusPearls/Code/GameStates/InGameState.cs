@@ -53,6 +53,11 @@ namespace PikachusPearls.Code.GameStates
         {
             if (fightState.State == FightState.EFightState.Main)
                 fightState.DrawGUI(gui);
+
+            else
+            {
+                map.
+            }
         }
     }
 }
