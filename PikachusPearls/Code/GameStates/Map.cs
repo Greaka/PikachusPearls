@@ -195,9 +195,22 @@ namespace PikachusPearls.Code.GameStates
 
         public void Draw(RenderWindow window)
         {
-            foreach (Tiles t in map)
+            Vector2f viewCenter = window.GetView().Center;
+            int viewLeft = (int)(window.GetView().Size.X /128 + 2);
+            int viewBottom = (int)(window.GetView().Size.Y / 128  + 2);
+
+            int startLeft = Math.Max(0,(int)(viewCenter.X / 64) - viewLeft);
+            int endRight = Math.Min((int)(viewCenter.X / 64) + viewLeft, map.GetLength(0) - 1);
+
+            int top = Math.Max(0, (int)(viewCenter.Y / 64) - viewBottom);
+            int bottom = Math.Min((int)(viewCenter.Y / 64 + viewBottom), map.GetLength(1) - 1);
+
+            for (int i = startLeft; i < endRight; i++)
             {
-                t.Draw(window);
+                for (int j = top; j < bottom; j++)
+                {
+                    map[i, j].Draw(window);                   
+                }
             }
         }
 
