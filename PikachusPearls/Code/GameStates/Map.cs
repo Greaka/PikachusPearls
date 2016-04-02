@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.Window;
 using System.Drawing;
+using System.Globalization;
 using PikachusPearls.Code.GameStates.IngameElements;
+using PikachusPearls.Code.Utility;
 
 namespace PikachusPearls.Code.GameStates
 {
-    class Map
+    public class Map
     {
         Tiles[,] map;
         int tileSize = 64;
@@ -29,7 +31,7 @@ namespace PikachusPearls.Code.GameStates
             }
         }
 
-        public bool IsWalkable(int x, int y) => map[x, y].getWalkable();
+        public bool IsWalkable(Vector2i v) => map[v.X, v.Y].getWalkable();
 
         public Map(Bitmap mask)
         {
