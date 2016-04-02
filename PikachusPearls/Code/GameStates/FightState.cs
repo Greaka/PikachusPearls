@@ -67,6 +67,9 @@ namespace PikachusPearls.Code.GameStates
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.PearlmonButton)),
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.ItemsButton)),
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.RunButton))};
+
+            SelectedShader = new Shader(null, "Shaders/SelectedShader.frag");
+            SelectedState = new RenderStates(SelectedShader);
         }
 
         /// <summary>
@@ -140,6 +143,8 @@ namespace PikachusPearls.Code.GameStates
             if (phase == Phase.Fetch)
             {
 
+
+                selected = (Selected)((int)selected % (int)Selected.Count);
             }
             if (phase == Phase.Execute)
             {

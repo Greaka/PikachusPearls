@@ -57,7 +57,9 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\IngameElements\Attack.cs" />
     <Compile Include="Code\GameStates\IngameElements\Pearlmon.cs" />
+    <Compile Include="Code\GameStates\IngameElements\Typing.cs" />
     <Compile Include="Code\GameStates\InGameState.cs" />
     <Compile Include="Code\GameStates\IngameElements\Player.cs" />
     <Compile Include="Code\GameStates\FightState.cs" />
