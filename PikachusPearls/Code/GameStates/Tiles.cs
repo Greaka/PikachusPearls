@@ -11,6 +11,7 @@ namespace PikachusPearls.Code.GameStates
     class Tiles
     {
         Sprite tileSprite;
+        Sprite foreGround;
         bool walkable;
 
         public Sprite getSprite { get { return tileSprite; } }
@@ -18,6 +19,12 @@ namespace PikachusPearls.Code.GameStates
         public bool getWalkable()
         {
             return walkable;
+        }
+
+        void SetForeGround(AssetManager.TextureName t)
+        {
+            foreGround = new Sprite(AssetManager.getTexture(t));
+            foreGround.Position = tileSprite.Position;
         }
 
         public Tiles(int tileType1, int tileType2, Vector2f position)
@@ -181,6 +188,12 @@ namespace PikachusPearls.Code.GameStates
         public void Draw(RenderWindow window)
         {
             window.Draw(tileSprite);
+        }
+
+        public void DrawForeGround(RenderWindow win)
+        {
+            if (foreGround != null)
+                win.Draw(foreGround);
         }
     }
 }

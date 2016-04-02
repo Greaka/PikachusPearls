@@ -14,7 +14,7 @@ namespace PikachusPearls.Code.GameStates
 
         public InGameState()
         {
-            player = new Player(new Vector2f(154, 79) * 64);
+            player = new Player(new Vector2f(40, 40) * 64);
             fightState = new FightState();
             map = new Map(new Bitmap("Map/Map.bmp"));
         }
@@ -45,8 +45,7 @@ namespace PikachusPearls.Code.GameStates
             }
             else
             {
-                map.Draw(win);
-                player.Draw(win);
+                map.Draw(win, player.Draw(win));
             }
         }
 
