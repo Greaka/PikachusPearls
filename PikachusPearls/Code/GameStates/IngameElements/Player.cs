@@ -29,6 +29,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 Position = position
             };
             playerSprite.stopAnimation();
+            playerSprite.updateFrame(new GameTime());
         }
 
         public Pearlmon GetFirstMon()
