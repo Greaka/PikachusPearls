@@ -32,7 +32,7 @@ namespace PikachusPearls.Code.GameStates
             }
             else
             {
-                player.Update();
+                player.Update(gameTime);
             }
             return GameState.InGame;
         }
