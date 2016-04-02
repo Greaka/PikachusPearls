@@ -119,7 +119,7 @@ namespace PikachusPearls.Code.GameStates
             State = EFightState.BeginAnimation;
             enemyMon = enemy;
             this.player = player;
-            //playersMon = player.getFirstMon();
+            playersMon = player.GetFirstMon();
         }
 
         public void Draw(RenderWindow win)

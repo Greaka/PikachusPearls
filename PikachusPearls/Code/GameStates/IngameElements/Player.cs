@@ -15,12 +15,17 @@ namespace PikachusPearls.Code.GameStates.IngameElements
            
         }
 
-        public void update()
+        public Pearlmon GetFirstMon()
+        {
+            return Pearlmons[0];
+        }
+
+        public void Update()
         {
             
         }
 
-        public void draw(RenderWindow win)
+        public void Draw(RenderWindow win)
         {
             //win.Draw(playerSprite);
         }

@@ -32,7 +32,7 @@ namespace PikachusPearls.Code.GameStates
             }
             else
             {
-                player.update();
+                player.Update();
             }
             return GameState.InGame;
         }
@@ -46,7 +46,7 @@ namespace PikachusPearls.Code.GameStates
             else
             {
                 map.Draw(win);
-                player.draw(win);
+                player.Draw(win);
             }
         }
 
