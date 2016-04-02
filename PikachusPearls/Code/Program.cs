@@ -83,7 +83,7 @@ namespace PikachusPearls.Code
                 // idleLoop for fixed FrameRate
                 float deltaPlusIdleTime = deltaTime;
                 while (deltaPlusIdleTime < (1F / fixedFps))
-                { 
+                {
                     deltaPlusIdleTime += (float)gameTime.EllapsedTime.TotalSeconds;
                 }
 
