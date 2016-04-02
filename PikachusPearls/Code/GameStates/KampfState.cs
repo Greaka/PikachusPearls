@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PikachusPearls.Code.Utility;
 
 namespace PikachusPearls.Code.GameStates
 {
@@ -38,7 +39,7 @@ namespace PikachusPearls.Code.GameStates
 
         }
 
-        public GameState Update()
+        public GameState Update(GameTime gameTime)
         {
 
             return GameState.InFight;

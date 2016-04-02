@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Channels;
 using PikachusPearls.Code.GameStates;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
@@ -8,8 +9,8 @@ namespace PikachusPearls.Code
 {
     class Program
     {
-        public static readonly float fixedFps = 120F;
-        public static GameTime gameTime;
+        public const float fixedFps = 120F;
+        public static GameTime gameTime { get; private set; }
         public static int inGameFrameCount { get; private set; }
 
         static bool running = true;
@@ -20,11 +21,18 @@ namespace PikachusPearls.Code
 
         static RenderWindow win;
         static GUI gui;
+        private static Vector2i windowPosition;
 
         static void Main(string[] args)
         {
             // initialize window and view
-            win = new RenderWindow(new VideoMode(800, 600), "Hadoken!!!");
+            win = new RenderWindow(new VideoMode(1280, 720), "Hadoken!!!");
+            windowPosition = win.Position;
+            win.Resized += (sender, e) =>
+            {
+                ((RenderWindow) sender).Size = new Vector2u(1280, 720);
+                ((RenderWindow) sender).Position = windowPosition;
+            };
             resetView();
             gui = new GUI(win);
 
@@ -44,10 +52,11 @@ namespace PikachusPearls.Code
 
             while (running && win.IsOpen())
             {
+                windowPosition = win.Position;
                 KeyboardInputManager.update();
 
                 if (currentGameState == GameState.InGame) { inGameFrameCount++; }
-                currentGameState = state.Update();
+                currentGameState = state.Update(gameTime);
 
                 if (currentGameState != prevGameState)
                 {
