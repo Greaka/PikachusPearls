@@ -14,7 +14,7 @@ namespace PikachusPearls.Code.GameStates
 
         public InGameState()
         {
-            player = new Player(new Vector2f(15, 15) * 64);
+            player = new Player(new Vector2f(154, 79) * 64);
             fightState = new FightState();
             map = new Map(new Bitmap("Map/Map.bmp"));
         }
