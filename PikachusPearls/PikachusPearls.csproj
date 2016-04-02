@@ -62,6 +62,8 @@
     <Compile Include="Code\GameStates\IngameElements\Player.cs" />
     <Compile Include="Code\GameStates\FightState.cs" />
     <Compile Include="Code\GameStates\MainMenuState.cs" />
+    <Compile Include="Code\GameStates\Map.cs" />
+    <Compile Include="Code\GameStates\Tiles.cs" />
     <Compile Include="Code\GUI.cs" />
     <Compile Include="Code\Utility\GameTime.cs" />
     <Compile Include="Code\Utility\Helper.cs" />
