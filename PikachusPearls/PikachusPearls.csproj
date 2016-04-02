@@ -34,15 +34,15 @@
   <ItemGroup>
     <Reference Include="sfmlnet-audio-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\sfmlnet-audio-2.dll</HintPath>
+      <HintPath>..\..\..\SFML.Net-2.1-32bits\SFML.Net-2.1\lib\sfmlnet-audio-2.dll</HintPath>
     </Reference>
     <Reference Include="sfmlnet-graphics-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\sfmlnet-graphics-2.dll</HintPath>
+      <HintPath>..\..\..\SFML.Net-2.1-32bits\SFML.Net-2.1\lib\sfmlnet-graphics-2.dll</HintPath>
     </Reference>
     <Reference Include="sfmlnet-window-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\sfmlnet-window-2.dll</HintPath>
+      <HintPath>..\..\..\SFML.Net-2.1-32bits\SFML.Net-2.1\lib\sfmlnet-window-2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,11 +57,15 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\IngameElements\Attack.cs" />
     <Compile Include="Code\GameStates\IngameElements\Pearlmon.cs" />
+    <Compile Include="Code\GameStates\IngameElements\Typing.cs" />
     <Compile Include="Code\GameStates\InGameState.cs" />
     <Compile Include="Code\GameStates\IngameElements\Player.cs" />
     <Compile Include="Code\GameStates\FightState.cs" />
     <Compile Include="Code\GameStates\MainMenuState.cs" />
+    <Compile Include="Code\GameStates\Map.cs" />
+    <Compile Include="Code\GameStates\Tiles.cs" />
     <Compile Include="Code\GUI.cs" />
     <Compile Include="Code\Utility\GameTime.cs" />
     <Compile Include="Code\Utility\Helper.cs" />
@@ -96,6 +100,7 @@
     <Content Include="libsndfile-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Map\Map.bmp" />
     <Content Include="openal32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -105,22 +110,22 @@
     <Content Include="Textures\BG.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\AttackButton.png">
+    <Content Include="Textures\button_Attack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\ItemsButton.png">
+    <Content Include="Textures\button_Items.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\button_Pearlmon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\button_Run.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\enter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\PearlmonButton.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Textures\pixel.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Textures\RunButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
