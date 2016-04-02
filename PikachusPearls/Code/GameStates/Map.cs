@@ -225,35 +225,32 @@ namespace PikachusPearls.Code.GameStates
 
         public void Draw(RenderWindow window, Sprite player)
         {
-            //Vector2f viewCenter = window.GetView().Center;
+            Vector2f viewCenter = window.GetView().Center;
 
+            //hi
 
+            int viewLeft = (int)(window.GetView().Size.X / 128 + 2);
+            int viewBottom = (int)(window.GetView().Size.Y / 128 + 2);
 
-            //int viewLeft = (int)(window.GetView().Size.X / 128 + 2);
-            //int viewBottom = (int)(window.GetView().Size.Y / 128 + 2);
+            int startLeft = Math.Max(0, (int)(viewCenter.X / 64) - viewLeft);
+            int endRight = Math.Min((int)(viewCenter.X / 64) + viewLeft, map.GetLength(0) - 1);
 
-            //int startLeft = Math.Max(0, (int)(viewCenter.X / 64) - viewLeft);
-            //int endRight = Math.Min((int)(viewCenter.X / 64) + viewLeft, map.GetLength(0) - 1);
+            int top = Math.Max(0, (int)(viewCenter.Y / 64) - viewBottom);
+            int bottom = Math.Min((int)(viewCenter.Y / 64 + viewBottom), map.GetLength(1) - 1);
 
-            //int top = Math.Max(0, (int)(viewCenter.Y / 64) - viewBottom);
-            //int bottom = Math.Min((int)(viewCenter.Y / 64 + viewBottom), map.GetLength(1) - 1);
+            for (int i = startLeft; i < endRight; i++)
+            {
+                for (int j = top; j < bottom; j++)
+                {
+                    if (map[i, j] != null)
+                        map[i, j].Draw(window);
 
-            //for (int i = startLeft; i < endRight; i++)
-            //{
-            //    for (int j = top; j < bottom; j++)
-            //    {
-            //        if (map[i, j] != null)
-            //            map[i, j].Draw(window);
+                    
 
-
-
-            //        if (map[i, j] != null)
-            //            map[i, j].DrawForeGround(window);
-            //    }
-            //}
-
-            foreach (Tiles t in map)
-                t.Draw(window);
+                    if (map[i, j] != null)
+                        map[i, j].DrawForeGround(window);
+                }
+            }
 
             window.Draw(player);
         }
