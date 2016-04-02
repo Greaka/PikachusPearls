@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PikachusPearls.Code.GameStates.IngameElements
 {
-    class T_Rex : Pearlmon
+    class Knight : Pearlmon
     {
-        public T_Rex(uint level)
+        public Knight(uint level)
         {
-            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
-            SpeciesName = "T-Rex";
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
+            SpeciesName = "Knight";
             MaxHp = 100;
             CurrentHp = MaxHp;
             Attack = 10;
