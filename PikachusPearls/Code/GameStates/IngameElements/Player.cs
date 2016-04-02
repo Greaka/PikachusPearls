@@ -21,6 +21,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         Pearlmon[] Pearlmons;
         private bool _inAnimation;
         private GameTime temp;
+        readonly Vector2 posOffset = new Vector2(-32f, -48f);
 
         private bool inAnimation
         {
@@ -45,7 +46,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.2f, 3, new Vector2i(64, 96))
             {
-                Position = position
+                Position = position + (Vector2f) posOffset
             };
             playerSprite.stopAnimation();
             playerSprite.updateFrame(new GameTime());
@@ -152,7 +153,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             win.Draw(playerSprite);
             View v = win.GetView();
-            v.Center = playerSprite.Position;
+            v.Center = playerSprite.Position - (Vector2f) posOffset;
             win.SetView(v);
         }
     }
