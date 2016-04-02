@@ -10,6 +10,8 @@ namespace PikachusPearls.Code.GameStates
 {
     class FightState
     {
+        Random rand = new Random();
+
         public enum EFightState
         {
             None = -1,
@@ -47,9 +49,7 @@ namespace PikachusPearls.Code.GameStates
             Attack1,
             Attack2,
             Attack3,
-            Attack4,
-
-            Count
+            Attack4
         }
 
         enum FetchMenu
@@ -119,7 +119,7 @@ namespace PikachusPearls.Code.GameStates
             State = EFightState.BeginAnimation;
             enemyMon = enemy;
             this.player = player;
-            //playersMon = player.getFirstMon();
+            playersMon = player.GetFirstMon();
         }
 
         public void Draw(RenderWindow win)
@@ -178,7 +178,7 @@ namespace PikachusPearls.Code.GameStates
             {
                 if (enemyAttackBuffer == null)
                 {
-                    //enemyAttackBuffer = enemyMon.getRandomAttack();
+                    enemyAttackBuffer = enemyMon.GetRandomAttack();
                 }
 
                 if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Down))
@@ -242,9 +242,7 @@ namespace PikachusPearls.Code.GameStates
                             switch (selected)
                             {
                                 case Selected.Attack:
-                                    selectedMenu = FetchMenu.Attacks;
-                                    selectedAttack = SelectedAttack.Attack1;
-                                    selected = Selected.Attack;
+                                    EnterAttacks();
                                     break;
 
                                 default:
@@ -253,7 +251,8 @@ namespace PikachusPearls.Code.GameStates
                             break;
 
                         case FetchMenu.Attacks:
-
+                            playerAttackBuffer = playersMon.GetAttack((int)selectedAttack);
+                            EnterExecute();
                             break;
 
                         default:
@@ -262,14 +261,71 @@ namespace PikachusPearls.Code.GameStates
                 }
 
                 selected = (Selected)((int)selected % (int)Selected.Count);
-                selectedAttack = (SelectedAttack)((int)selectedAttack % (int)SelectedAttack.Count);
+                selectedAttack = (SelectedAttack)((int)selectedAttack % playersMon.CountOfKnownAttacks);
             }
             if (phase == Phase.Execute)
             {
+                if(playersMon.Speed > enemyMon.Speed)
+                {
+                    enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                    playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                }
+                if(playersMon.Speed < enemyMon.Speed)
+                {
+                    playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                    enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                }
+                if(playersMon.Speed == enemyMon.Speed)
+                {
+                    
+                    int i = rand.Next(0, 1);
+                    if(i == 0)
+                    {
+                        enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                        playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                    }
+                    else
+                    {
+                        playersMon.BeAttackedByWith(enemyMon, enemyAttackBuffer);
+                        enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
+                    }
+                }
 
+                EnterFetch();
             }
             if (phase == Phase.None)
                 EndFight();
+        }
+
+        void EnterFetch()
+        {
+            phase = Phase.Fetch;
+            selected = Selected.Attack;
+            selectedMenu = FetchMenu.Menu;
+
+            playerAttackBuffer = null;
+            enemyAttackBuffer = null;
+        }
+
+        void EnterAttacks()
+        {
+            selectedMenu = FetchMenu.Attacks;
+            selectedAttack = SelectedAttack.Attack1;
+            selected = Selected.Attack;
+        }
+
+        void ExitAttacks()
+        {
+            selectedAttack = SelectedAttack.None;
+            selectedMenu = FetchMenu.Menu;
+        }
+
+        void EnterExecute()
+        {
+            ExitAttacks();
+            selectedMenu = FetchMenu.None;
+            selected = Selected.None;
+            phase = Phase.Execute;
         }
 
         void EndFight()
