@@ -9,6 +9,8 @@ namespace PikachusPearls.Code
 {
     class Program
     {
+        public static Font Font { get; private set; }
+
         public const float fixedFps = 120F;
         public static GameTime gameTime { get; private set; }
         public static int inGameFrameCount { get; private set; }
@@ -25,6 +27,7 @@ namespace PikachusPearls.Code
 
         static void Main(string[] args)
         {
+            Font = new Font("Fonts/calibri.ttf");
             // initialize window and view
             win = new RenderWindow(new VideoMode(1280, 720), "Hadoken!!!");
             windowPosition = win.Position;
