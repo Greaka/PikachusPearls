@@ -53,6 +53,7 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.WaterTop, new Texture("Textures/water_top.png"));
             textures.Add(TextureName.WaterTopLeft, new Texture("Textures/water_topLeft.png"));
             textures.Add(TextureName.WaterTopRight, new Texture("Textures/water_topRight.png"));
+            textures.Add(TextureName.PlayerSpriteSheet, new Texture("Textures/player_spritesheet.png"));
         }
 
         public enum TextureName
@@ -88,7 +89,8 @@ namespace PikachusPearls.Code
             WaterRight,
             WaterTop,
             WaterTopLeft,
-            WaterTopRight
+            WaterTopRight,
+            PlayerSpriteSheet
 
 
 
