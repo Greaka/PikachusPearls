@@ -86,8 +86,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                         break;
                 }
 
-                float value = 128 * (float)(gameTime.EllapsedTime.TotalSeconds);
-                playerSprite.Position += (Vector2f) (vector * value);
+                float speed = 64; //pixel per 500 milliseconds
+                speed /= 500f;
+                speed *= (float)gameTime.EllapsedTime.TotalMilliseconds;
+
+                playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
             }
         }
