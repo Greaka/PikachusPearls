@@ -10,9 +10,9 @@ namespace PikachusPearls.Code
         public float secondsPerFrame { get; private set; }
         public Vector2i spriteSize { get; private set; }
         public int frameCount { get; private set; }
-        Vector2i upperLeftCorner;
+        public Vector2i upperLeftCorner;
 
-        float? startSecond;
+        public float? startSecond;
 
         public AnimatedSprite(Texture spriteSheet, float secondsPerFrame, int frameCount, Vector2i spriteSize)
             : this(spriteSheet, secondsPerFrame, frameCount, spriteSize, new Vector2i(0, 0))
