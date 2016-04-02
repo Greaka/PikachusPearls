@@ -53,7 +53,7 @@ namespace PikachusPearls.Code
             while (running && win.IsOpen())
             {
                 windowPosition = win.Position;
-                KeyboardInputManager.update();
+                KeyboardInputManager.Update();
 
                 if (currentGameState == GameState.InGame) { inGameFrameCount++; }
                 currentGameState = state.Update(gameTime);
