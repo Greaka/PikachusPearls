@@ -19,7 +19,26 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         AnimatedSprite playerSprite;
         Texture playerTex;
         Pearlmon[] Pearlmons;
-        private bool inAnimation;
+        private bool _inAnimation;
+        private GameTime temp;
+
+        private bool inAnimation
+        {
+            get { return _inAnimation; }
+            set
+            {
+                if (value)
+                {
+                    playerSprite.restartAnimation(temp);
+                }
+                else
+                {
+                    playerSprite.stopAnimation();
+                }
+                _inAnimation = value;
+            }
+        }
+
         private Direction moveDirection = Direction.none;
 
         public Player(Vector2f position)
@@ -39,19 +58,44 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void Update(GameTime gameTime)
         {
+            temp = gameTime;
             if (!inAnimation)
             {
                 DetermineDirection();
             }
             else
             {
+                Vector2f vector = Vector2.Zero;
+                switch (moveDirection)
+                {
+                    case Direction.down:
+                        vector = Vector2.Down;
+                        break;
+                    case Direction.up:
+                        vector = Vector2.Up;
+                        break;
+                    case Direction.left:
+                        vector = Vector2.Left;
+                        break;
+                    case Direction.right:
+                        vector = Vector2.Right;
+                        break;
+                    case Direction.none:
+                        inAnimation = false;
+                        break;
+                }
+
+                float speed = 64; //pixel per 500 milliseconds
+                speed /= 500f;
+                speed *= (float)gameTime.EllapsedTime.TotalMilliseconds;
+
+                playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
             }
         }
 
         private void DetermineDirection()
         {
-            inAnimation = true;
             Direction direction = Direction.none;
             var up = false;
             var down = false;
@@ -61,22 +105,32 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             {
                 up = true;
                 direction = Direction.up;
+                playerSprite.upperLeftCorner = new Vector2i(0, 96);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
             {
                 down = true;
                 direction = Direction.down;
+
+                playerSprite.upperLeftCorner = new Vector2i(0, 0);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
                 left = true;
                 direction = Direction.left;
+                playerSprite.upperLeftCorner = new Vector2i(0, 288);
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
                 right = true;
                 direction = Direction.right;
+                playerSprite.upperLeftCorner = new Vector2i(0, 192);
             }
+
+            if (up || down || left || right)
+                inAnimation = true;
+            else
+                inAnimation = false;
 
             switch (moveDirection)
             {
@@ -95,8 +149,6 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
 
             moveDirection = direction;
-            if (moveDirection == Direction.none)
-                inAnimation = false;
         }
 
         public void Draw(RenderWindow win)
