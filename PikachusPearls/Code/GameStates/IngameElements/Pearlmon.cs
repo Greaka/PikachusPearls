@@ -19,14 +19,20 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public float Speed { get; protected set; }
         public uint Lvl { get; protected set; }
         public uint Exp { get; protected set; }
-
+        public int CountOfKnownAttacks { get; protected set; }
         public Typing Typing { get; protected set; }
-
-        Sprite sprite;
+        protected Attack[] Attacks = new Attack[4];
+        protected Sprite sprite;
 
         public Attack GetRandomAttack()
         {
+            Random rand = new Random();
+            return Attacks[rand.Next(0, CountOfKnownAttacks)];
+        }
 
+        public Attack GetAttack(int index)
+        {
+            return Attacks[index];
         }
 
         protected void Rename(string newName)
