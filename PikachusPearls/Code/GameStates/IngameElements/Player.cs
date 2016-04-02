@@ -6,9 +6,12 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 {
     public class Player
     {
-      
+        Sprite playerSprite;
+        Texture playerTex;
+
         public Player(Vector2f position)
         {
+           
         }
 
         public void update()
@@ -18,7 +21,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void draw(RenderWindow win)
         {
-            win.Draw(sprite);
+            win.Draw(playerSprite);
         }
     }
 }
