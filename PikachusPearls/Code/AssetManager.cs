@@ -31,7 +31,7 @@ namespace PikachusPearls.Code
         {
             WhitePixel,
             MainMenuBackground,
-            PressEnter
+            PressEnter,
             AttackButton,
             ItemsButton,
             PearlmonButton,
