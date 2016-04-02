@@ -40,13 +40,40 @@ namespace PikachusPearls.Code.GameStates
             Count
         }
 
+        enum SelectedAttack
+        {
+            None = -1,
+
+            Attack1,
+            Attack2,
+            Attack3,
+            Attack4,
+
+            Count
+        }
+
+        enum FetchMenu
+        {
+            None = -1,
+
+            Menu,
+            Attacks,
+            Pearlmons,
+            Items,
+
+            Count
+        }
+
         Sprite Background;
         Player player;
         Pearlmon playersMon;
         Pearlmon enemyMon;
         public EFightState State { get; private set; }
+
         Phase phase;
         Selected selected;
+        SelectedAttack selectedAttack;
+        FetchMenu selectedMenu;
 
         RectangleShape Menubackground;
         Sprite[] Menu;
@@ -54,11 +81,17 @@ namespace PikachusPearls.Code.GameStates
         Shader SelectedShader;
         RenderStates SelectedState;
 
+        Attack enemyAttackBuffer;
+        Attack playerAttackBuffer;
+
         public FightState()
         {
             State = EFightState.None;
             phase = Phase.None;
             selected = Selected.None;
+            selectedAttack = SelectedAttack.None;
+
+
             Menubackground = new RectangleShape(new SFML.Window.Vector2f(400, 300));
             Menubackground.Position = new SFML.Window.Vector2f(880, 420);
             Menubackground.OutlineColor = new Color(0, 0, 0);
@@ -136,15 +169,100 @@ namespace PikachusPearls.Code.GameStates
             State = EFightState.Main;
             phase = Phase.Fetch;
             selected = Selected.Attack;
+            selectedMenu = FetchMenu.Menu;
         }
 
         void UpdateMain()
         {
             if (phase == Phase.Fetch)
             {
+                if (enemyAttackBuffer == null)
+                {
+                    //enemyAttackBuffer = enemyMon.getRandomAttack();
+                }
 
+                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Down))
+                    switch (selectedMenu)
+                    {
+                        case FetchMenu.Menu:
+                            selected += 2;
+                            break;
+                        case FetchMenu.Attacks:
+                            selectedAttack += 2;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Up))
+                    switch (selectedMenu)
+                    {
+                        case FetchMenu.Menu:
+                            selected += 2;
+                            break;
+                        case FetchMenu.Attacks:
+                            selectedAttack += 2;
+                            break;
+                        default:
+                            break;
+                    }
+
+                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Right))
+                    switch (selectedMenu)
+                    {
+                        case FetchMenu.Menu:
+                            selected++;
+                            break;
+                        case FetchMenu.Attacks:
+                            selectedAttack++;
+                            break;
+                        default:
+                            break;
+                    }
+
+                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Left))
+                    switch (selectedMenu)
+                    {
+                        case FetchMenu.Menu:
+                            selected += 3;
+                            break;
+                        case FetchMenu.Attacks:
+                            selectedAttack += 3;
+                            break;
+                        default:
+                            break;
+                    }
+
+                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Return))
+                {
+                    switch (selectedMenu)
+                    {
+                        case FetchMenu.Menu:
+                            switch (selected)
+                            {
+                                case Selected.Attack:
+                                    selectedMenu = FetchMenu.Attacks;
+                                    selectedAttack = SelectedAttack.Attack1;
+                                    selected = Selected.Attack;
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                            break;
+
+                        case FetchMenu.Attacks:
+
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
 
                 selected = (Selected)((int)selected % (int)Selected.Count);
+                selectedAttack = (SelectedAttack)((int)selectedAttack % (int)SelectedAttack.Count);
             }
             if (phase == Phase.Execute)
             {
@@ -157,6 +275,9 @@ namespace PikachusPearls.Code.GameStates
         void EndFight()
         {
             State = EFightState.None;
+            selected = Selected.None;
+            selectedAttack = SelectedAttack.None;
+            selectedMenu = FetchMenu.None;
         }
     }
 }

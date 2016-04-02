@@ -24,6 +24,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         Sprite sprite;
 
+        public Attack GetRandomAttack()
+        {
+
+        }
+
         protected void Rename(string newName)
         {
             Name = newName;
