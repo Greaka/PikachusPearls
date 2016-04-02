@@ -34,6 +34,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 }
                 else
                 {
+                    playerSprite.updateFrame(new GameTime());
                     playerSprite.stopAnimation();
                 }
                 _inAnimation = value;
@@ -48,8 +49,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             {
                 Position = position + (Vector2f) posOffset
             };
-            playerSprite.stopAnimation();
-            playerSprite.updateFrame(new GameTime());
+            inAnimation = false;
         }
 
         public Pearlmon GetFirstMon()
@@ -86,8 +86,8 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                         break;
                 }
 
-                float speed = 64; //pixel per 500 milliseconds
-                speed /= 500f;
+                float speed = 64; //pixel per 300 milliseconds
+                speed /= 300f;
                 speed *= (float)gameTime.EllapsedTime.TotalMilliseconds;
 
                 playerSprite.Position += (Vector2f) (vector * speed);
@@ -152,12 +152,12 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             moveDirection = direction;
         }
 
-        public void Draw(RenderWindow win)
+        public Sprite Draw(RenderWindow win)
         {
-            win.Draw(playerSprite);
             View v = win.GetView();
             v.Center = playerSprite.Position - (Vector2f) posOffset;
             win.SetView(v);
+            return playerSprite;
         }
     }
 }
