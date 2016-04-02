@@ -53,6 +53,7 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.TRexBack, new Texture("Textures/T-Rex_back.png"));
             textures.Add(TextureName.TRexFront, new Texture("Textures/T-Rex_front.png"));
 
+            textures.Add(TextureName.PlayerSpriteSheet, new Texture("Textures/player_spritesheet.png"));
         }
 
         public enum TextureName
@@ -90,7 +91,8 @@ namespace PikachusPearls.Code
             WaterTopLeft,
             WaterTopRight,
             TRexBack,
-            TRexFront
+            TRexFront,
+            PlayerSpriteSheet
 
 
         }

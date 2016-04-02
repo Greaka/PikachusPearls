@@ -1,5 +1,6 @@
 ﻿using PikachusPearls.Code.GameStates.IngameElements;
 using SFML.Graphics;
+using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,20 +130,26 @@ namespace PikachusPearls.Code.GameStates
             playersMon.Draw(win);
 
             if (phase == Phase.Fetch)
-                win.Draw(Menubackground);
-        }
-
-        public void DrawGUI(GUI gui)
-        {
-            if(phase == Phase.Fetch)
             {
-                for(int i = 0; i<(int)Selected.Count; ++i)
-                {
-                    if ((Selected)i == selected)
-                        gui.Draw(Menu[i], SelectedState);
-                    else
-                        gui.Draw(Menu[i]);
-                }
+                win.Draw(Menubackground);
+
+                if (selectedMenu == FetchMenu.Menu)
+                    for (int i = 0; i < (int)Selected.Count; ++i)
+                    {
+                        if ((Selected)i == selected)
+                            win.Draw(Menu[i], SelectedState);
+                        else
+                            win.Draw(Menu[i]);
+                    }
+
+                if (selectedMenu == FetchMenu.Attacks)
+                    for (int i = 0; i < playersMon.CountOfKnownAttacks; ++i)
+                    {
+                        //playersMon.GetAttack(i).Draw(win, 
+                        //    (i <= 0)?(Menubackground.Position + new Vector2f( ):(),
+                        //    )
+
+                    }
             }
         }
 
