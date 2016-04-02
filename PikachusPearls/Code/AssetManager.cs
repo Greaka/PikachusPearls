@@ -25,7 +25,6 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.ItemsButton, new Texture("Textures/button_Items.png"));
             textures.Add(TextureName.PearlmonButton, new Texture("Textures/button_Pearlmon.png"));
             textures.Add(TextureName.RunButton, new Texture("Textures/button_Run.png"));
-
             textures.Add(TextureName.GrassHigh, new Texture("Textures/grass_High.png"));
             textures.Add(TextureName.GrassPlain, new Texture("Textures/grass_Plain.png"));
             textures.Add(TextureName.SandBottom, new Texture("Textures/sand_bottom.png"));
@@ -37,9 +36,7 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.SandTop, new Texture("Textures/sand_top.png"));
             textures.Add(TextureName.SandTopLeft, new Texture("Textures/sand_topLeft.png"));
             textures.Add(TextureName.SandTopRight, new Texture("Textures/sand_topRight.png"));
-
             textures.Add(TextureName.Tree, new Texture("Textures/tree.png"));
-
             textures.Add(TextureName.WaterBottom, new Texture("Textures/water_bottom.png"));
             textures.Add(TextureName.WaterBottomLeft, new Texture("Textures/water_bottomLeft.png"));
             textures.Add(TextureName.WaterBottomRight, new Texture("Textures/water_bottomRight.png"));
@@ -53,6 +50,9 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.WaterTop, new Texture("Textures/water_top.png"));
             textures.Add(TextureName.WaterTopLeft, new Texture("Textures/water_topLeft.png"));
             textures.Add(TextureName.WaterTopRight, new Texture("Textures/water_topRight.png"));
+            textures.Add(TextureName.TRexBack, new Texture("Textures/T-Rex_back.png"));
+            textures.Add(TextureName.TRexFront, new Texture("Textures/T-Rex_front.png"));
+
         }
 
         public enum TextureName
@@ -88,8 +88,9 @@ namespace PikachusPearls.Code
             WaterRight,
             WaterTop,
             WaterTopLeft,
-            WaterTopRight
-
+            WaterTopRight,
+            TRexBack,
+            TRexFront
 
 
         }

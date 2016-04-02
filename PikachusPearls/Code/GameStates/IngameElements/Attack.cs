@@ -12,4 +12,35 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public int Strength { get; protected set; }
         public Typing.Type Type { get; protected set; }
     }
+
+    public class Bite : Attack
+    {
+        public Bite()
+        {
+            Name = "Bite";
+            Strength = 15;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Headbutt : Attack
+    {
+        public Headbutt()
+        {
+            Name = "Headbutt";
+            Strength = 15;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Scratch : Attack
+    {
+        public Scratch()
+        {
+            Name = "Scratch";
+            Strength = 15;
+            Type = Typing.Type.Normal;
+        }
+    }
+
 }
