@@ -13,6 +13,9 @@ namespace PikachusPearls.Code.GameStates
         private bool oppositive = true;
         private double alpha;
 
+        private Shader FadeShader;
+        private RenderStates FadeShaderState;
+
         public MainMenuState()
         {
             background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
@@ -20,31 +23,18 @@ namespace PikachusPearls.Code.GameStates
             {
                 Color = new Color(0, 0, 0, 0)
             };
+
+            FadeShader = new Shader(null, "Shaders/FadeShader.frag");
+            FadeShaderState = new RenderStates(FadeShader);
         }
 
         public GameState Update(GameTime gameTime)
         {
+            FadeShaderState.Shader.SetParameter("time", (float)gameTime.TotalTime.TotalSeconds);
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
             {
                 return GameState.InGame;
             }
-            
-            if (entertext.Color.A - gameTime.EllapsedTime.Milliseconds/100 <= 0)
-            {
-                oppositive = true;
-            }
-            else
-            {
-                if (entertext.Color.A + gameTime.EllapsedTime.Milliseconds / 100 >= 255)
-                {
-                    oppositive = false;
-                }
-            }
-            
-            alpha = oppositive
-                ? alpha + gameTime.EllapsedTime.Milliseconds/100d
-                : alpha - gameTime.EllapsedTime.Milliseconds/100d;
-            entertext.Color = new Color(0, 0, 0, (byte) alpha);
 
             return GameState.MainMenu;
         }
@@ -63,7 +53,7 @@ namespace PikachusPearls.Code.GameStates
 
             entertext.Position = new Vector2f(win.GetView().Center.X - entertext.Texture.Size.X/2,
                 win.GetView().Center.Y - entertext.Texture.Size.Y/2);
-            win.Draw(entertext);
+            win.Draw(entertext, FadeShaderState);
         }
 
         public void DrawGUI(GUI gui)
