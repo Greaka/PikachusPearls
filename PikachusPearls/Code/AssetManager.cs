@@ -21,10 +21,10 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.WhitePixel, new Texture("Textures/pixel.png"));
             textures.Add(TextureName.MainMenuBackground, new Texture("Textures/BG.png"));
             textures.Add(TextureName.PressEnter, new Texture("Textures/enter.png"));
-            textures.Add(TextureName.AttackButton, new Texture("Textures/AttackButton.png"));
-            textures.Add(TextureName.ItemsButton, new Texture("Textures/ItemsButton.png"));
-            textures.Add(TextureName.PearlmonButton, new Texture("Textures/PearlmonButton.png"));
-            textures.Add(TextureName.RunButton, new Texture("Textures/RunButton.png"));
+            textures.Add(TextureName.AttackButton, new Texture("Textures/button_Attack.png"));
+            textures.Add(TextureName.ItemsButton, new Texture("Textures/button_Items.png"));
+            textures.Add(TextureName.PearlmonButton, new Texture("Textures/button_Pearlmon.png"));
+            textures.Add(TextureName.RunButton, new Texture("Textures/button_Run.png"));
         }
 
         public enum TextureName
