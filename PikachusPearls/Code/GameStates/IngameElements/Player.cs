@@ -8,6 +8,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
     {
         Sprite playerSprite;
         Texture playerTex;
+        Pearlmon[] Pearlmons;
 
         public Player(Vector2f position)
         {

@@ -37,7 +37,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void BeAttackedByWith(Pearlmon opponent, Attack attack)
         {
+            float dmg = opponent.Attack * attack.Strength - Defense;
+            float effectivness = Typing.GetEffectivness(attack.Type);
 
+            CurrentHp -= dmg * effectivness;
         }
 
         protected void Rename(string newName)
