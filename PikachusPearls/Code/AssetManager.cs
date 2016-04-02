@@ -52,8 +52,16 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.WaterTopRight, new Texture("Textures/water_topRight.png"));
             textures.Add(TextureName.TRexBack, new Texture("Textures/T-Rex_back.png"));
             textures.Add(TextureName.TRexFront, new Texture("Textures/T-Rex_front.png"));
-
             textures.Add(TextureName.PlayerSpriteSheet, new Texture("Textures/player_spritesheet.png"));
+            textures.Add(TextureName.KnightBack, new Texture("Textures/Knight_Back.png"));
+            textures.Add(TextureName.KnightFront, new Texture("Textures/Knight_Front.png"));
+            textures.Add(TextureName.ShakespeareBack, new Texture("Textures/Shakespeare_Back.png"));
+            textures.Add(TextureName.ShakespeareFront, new Texture("Textures/Shakespeare_Front.png"));
+            textures.Add(TextureName.SteuerberaterBack, new Texture("Textures/Steuerberater_Back.png"));
+            textures.Add(TextureName.SteuerberaterFront, new Texture("Textures/Steuerberater_Front.png"));
+            textures.Add(TextureName.TriopsBack, new Texture("Textures/Triops_Back.png"));
+            textures.Add(TextureName.TriopsFront, new Texture("Textures/Triops_Front.png"));
+            textures.Add(TextureName.House, new Texture("Textures/House.png"));
         }
 
         public enum TextureName
@@ -92,9 +100,16 @@ namespace PikachusPearls.Code
             WaterTopRight,
             TRexBack,
             TRexFront,
-            PlayerSpriteSheet
-
-
+            PlayerSpriteSheet,
+            KnightBack,
+            KnightFront,
+            ShakespeareBack,
+            ShakespeareFront,
+            SteuerberaterBack,
+            SteuerberaterFront,
+            TriopsBack,
+            TriopsFront,
+            House
         }
     }
 }

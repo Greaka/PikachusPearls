@@ -58,4 +58,33 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         }
     }
 
+    public class Bureaucracy : Attack
+    {
+        public Bureaucracy()
+        {
+            Name = "Bureaucracy";
+            Strength = 120;
+            Type = Typing.Type.Intelligence;
+        }
+    }
+
+    public class PayDay : Attack
+    {
+        public PayDay()
+        {
+            Name = "Pay Day";
+            Strength = 50;
+            Type = Typing.Type.Intelligence;
+        }
+    }
+
+    public class BeOrNotToBe : Attack
+    {
+        public BeOrNotToBe()
+        {
+            Name = "Be Or Not To Be";
+            Strength = 60;
+            Type = Typing.Type.Charisma;
+        }
+    }
 }
