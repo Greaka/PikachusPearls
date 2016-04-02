@@ -213,9 +213,12 @@ namespace PikachusPearls.Code.GameStates
             {
                 for (int j = top; j < bottom; j++)
                 {
-                    map[i, j].Draw(window);      
+                    map[i, j].Draw(window);
+                    map[i, j].DrawForeGround(window);
                 }
             }
+
+            window.Draw(player);
         }
 
     }

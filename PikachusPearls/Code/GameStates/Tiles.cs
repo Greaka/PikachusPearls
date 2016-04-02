@@ -192,7 +192,8 @@ namespace PikachusPearls.Code.GameStates
 
         public void DrawForeGround(RenderWindow win)
         {
-            win.Draw(foreGround);
+            if (foreGround != null)
+                win.Draw(foreGround);
         }
     }
 }
