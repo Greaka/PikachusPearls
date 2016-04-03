@@ -24,7 +24,23 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public string Name { get; protected set; }
 
         public float MaxHp { get; protected set; }
-        public float CurrentHp { get; protected set; }
+
+        private float _currentHp;
+        public float CurrentHp
+        {
+            get { return _currentHp; }
+            protected set
+            {
+                _currentHp = value;
+                HpBar_Current.Transform.TransformRect(
+                    new FloatRect(
+                        HpBar_Current.Position.X, 
+                        HpBar_Current.Position.Y, 
+                        2 + (HpBar_Current.TextureRect.Width - 4) * CurrentHp / MaxHp, 
+                        HpBar_Current.Texture.Size.Y));
+            }
+        }
+
         public float Attack { get; protected set; }
         public float Defense { get; protected set; }
         public float Speed { get; protected set; }
@@ -35,6 +51,16 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         protected Attack[] Attacks = new Attack[4];
         protected Sprite sprite;
 
+        public Sprite HpBar_Base { get; protected set; }
+        public Sprite HpBar_Current { get; protected set; }
+
+        public Pearlmon(uint level)
+        {
+            Lvl = level;
+            HpBar_Base = new Sprite(AssetManager.getTexture(AssetManager.TextureName.Hp_Base));
+            HpBar_Current = new Sprite(AssetManager.getTexture(AssetManager.TextureName.Hp_Current));
+        }
+
         public void Dispose()
         {
             foreach (Attack a in Attacks)
@@ -42,6 +68,8 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     a.Dispose();
             Attacks = null;
             sprite.Dispose();
+            HpBar_Current.Dispose();
+            HpBar_Base.Dispose();
         }
 
         public Attack GetRandomAttack()
@@ -86,6 +114,8 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public void Draw(RenderWindow win)
         {
             win.Draw(sprite);
+            win.Draw(HpBar_Base);
+            win.Draw(HpBar_Current);
         }
     }
 
@@ -93,11 +123,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
     class T_Rex : Pearlmon
     {
-        public T_Rex(uint level)
+        public T_Rex(uint level) : base(level)
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
             SpeciesName = "T-Rex";
-            Lvl = level;
             MaxHp = HpCalculation(82);
             CurrentHp = MaxHp;
             Attack = StatCalculation(121);
@@ -114,11 +143,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
     class Knight : Pearlmon
     {
-        public Knight(uint level)
+        public Knight(uint level) : base(level)
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
             SpeciesName = "Knight";
-            Lvl = level;
             MaxHp = HpCalculation(76);
             CurrentHp = MaxHp;
             Attack = StatCalculation(113);
