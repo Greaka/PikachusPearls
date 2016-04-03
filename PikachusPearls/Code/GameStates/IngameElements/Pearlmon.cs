@@ -1,9 +1,6 @@
 ﻿using SFML.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SFML.Window;
 
 namespace PikachusPearls.Code.GameStates.IngameElements
 {
@@ -24,7 +21,18 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public string Name { get; protected set; }
 
         public float MaxHp { get; protected set; }
-        public float CurrentHp { get; protected set; }
+
+        private float _currentHp;
+        public float CurrentHp
+        {
+            get { return _currentHp; }
+            protected set
+            {
+                _currentHp = value;
+                HpBar_Current.Scale = new Vector2f((2 + (HpBar_Current.TextureRect.Width - 4) * CurrentHp / MaxHp) / HpBar_Current.TextureRect.Width, 1);
+            }
+        }
+
         public float Attack { get; protected set; }
         public float Defense { get; protected set; }
         public float Speed { get; protected set; }
@@ -35,6 +43,16 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         protected Attack[] Attacks = new Attack[4];
         protected Sprite sprite;
 
+        public Sprite HpBar_Base { get; protected set; }
+        public Sprite HpBar_Current { get; protected set; }
+
+        public Pearlmon(uint level)
+        {
+            Lvl = level;
+            HpBar_Base = new Sprite(AssetManager.getTexture(AssetManager.TextureName.Hp_Base));
+            HpBar_Current = new Sprite(AssetManager.getTexture(AssetManager.TextureName.Hp_Current));
+        }
+
         public void Dispose()
         {
             foreach (Attack a in Attacks)
@@ -42,6 +60,8 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                     a.Dispose();
             Attacks = null;
             sprite.Dispose();
+            HpBar_Current.Dispose();
+            HpBar_Base.Dispose();
         }
 
         public Attack GetRandomAttack()
@@ -62,7 +82,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public void BeAttackedByWith(Pearlmon opponent, Attack attack)
         {
-            float dmg = ((opponent.Typing.Contains(attack.Type)) ? (1.5f) : (1)) * opponent.Attack * attack.Strength - Defense;
+            float dmg = Math.Max(1, ((opponent.Typing.Contains(attack.Type)) ? (1.5f) : (1)) * opponent.Attack * ((float)attack.Strength/100f) - Defense);
             float effectivness = Typing.GetEffectivness(attack.Type);
 
             CurrentHp -= dmg * effectivness;
@@ -86,6 +106,8 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public void Draw(RenderWindow win)
         {
             win.Draw(sprite);
+            win.Draw(HpBar_Base);
+            win.Draw(HpBar_Current);
         }
     }
 
@@ -93,11 +115,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
     class T_Rex : Pearlmon
     {
-        public T_Rex(uint level)
+        public T_Rex(uint level) : base(level)
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
             SpeciesName = "T-Rex";
-            Lvl = level;
             MaxHp = HpCalculation(82);
             CurrentHp = MaxHp;
             Attack = StatCalculation(121);
@@ -114,11 +135,10 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
     class Knight : Pearlmon
     {
-        public Knight(uint level)
+        public Knight(uint level) : base(level)
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
             SpeciesName = "Knight";
-            Lvl = level;
             MaxHp = HpCalculation(76);
             CurrentHp = MaxHp;
             Attack = StatCalculation(113);
@@ -126,6 +146,66 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             Speed = StatCalculation(95);
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
+            Attacks[0] = new Headbutt();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new SwordCut();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Shakespeare : Pearlmon
+    {
+        public Shakespeare(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.ShakespeareFront));
+            SpeciesName = "Shakespeare";
+            MaxHp = HpCalculation(62);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(103);
+            Defense = StatCalculation(86);
+            Speed = StatCalculation(135);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Charisma);
+            Attacks[0] = new BeOrNotToBe();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Steuerberater : Pearlmon
+    {
+        public Steuerberater(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SteuerberaterFront));
+            SpeciesName = "Steuerberater";
+            MaxHp = HpCalculation(74);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(96);
+            Defense = StatCalculation(111);
+            Speed = StatCalculation(124);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Intelligence);
+            Attacks[0] = new PayDay();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Triops : Pearlmon
+    {
+        public Triops(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TriopsFront));
+            SpeciesName = "Triops";
+            MaxHp = HpCalculation(74);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(134);
+            Defense = StatCalculation(165);
+            Speed = StatCalculation(74);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Normal);
             Attacks[0] = new Headbutt();
             Attacks[1] = new Scratch();
             Attacks[2] = new Bite();

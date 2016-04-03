@@ -62,6 +62,9 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.TriopsBack, new Texture("Textures/Triops_Back.png"));
             textures.Add(TextureName.TriopsFront, new Texture("Textures/Triops_Front.png"));
             textures.Add(TextureName.House, new Texture("Textures/House.png"));
+            textures.Add(TextureName.Attackscreen, new Texture("Textures/Attackscreen.png"));
+            textures.Add(TextureName.Hp_Base, new Texture("Textures/HP_Base.png"));
+            textures.Add(TextureName.Hp_Current, new Texture("Textures/HP_green.png"));
         }
 
         public enum TextureName
@@ -109,7 +112,10 @@ namespace PikachusPearls.Code
             SteuerberaterFront,
             TriopsBack,
             TriopsFront,
-            House
+            House, 
+            Attackscreen,
+            Hp_Current,
+            Hp_Base
         }
     }
 }
