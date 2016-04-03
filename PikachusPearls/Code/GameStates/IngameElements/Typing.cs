@@ -33,6 +33,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         Type type1;
         Type type2;
 
+        public bool Contains(Type t)
+        {
+            return type1 == t || type2 == t;
+        }
+
         public Typing() : this(Type.Normal) { }
 
         public Typing(Type type) : this(type, Type.None) { }

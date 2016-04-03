@@ -1,5 +1,6 @@
 ﻿using PikachusPearls.Code.GameStates.IngameElements;
 using SFML.Graphics;
+using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,20 +130,23 @@ namespace PikachusPearls.Code.GameStates
             playersMon.Draw(win);
 
             if (phase == Phase.Fetch)
-                win.Draw(Menubackground);
-        }
-
-        public void DrawGUI(GUI gui)
-        {
-            if(phase == Phase.Fetch)
             {
-                for(int i = 0; i<(int)Selected.Count; ++i)
-                {
-                    if ((Selected)i == selected)
-                        gui.Draw(Menu[i], SelectedState);
-                    else
-                        gui.Draw(Menu[i]);
-                }
+                win.Draw(Menubackground);
+
+                if (selectedMenu == FetchMenu.Menu)
+                    for (int i = 0; i < (int)Selected.Count; ++i)
+                    {
+                        if ((Selected)i == selected)
+                            win.Draw(Menu[i], SelectedState);
+                        else
+                            win.Draw(Menu[i]);
+                    }
+
+                if (selectedMenu == FetchMenu.Attacks)
+                    for (int i = 0; i < playersMon.CountOfKnownAttacks; ++i)
+                    {
+                        playersMon.GetAttack(i).Draw(win, (i <= 1) ? (Menubackground.Position + i * new Vector2f(Menubackground.Size.X / 2, 0)) : ((i == 2) ? (Menubackground.Position + new Vector2f(0, Menubackground.Size.Y)) : (Menubackground.Position + Menubackground.Size / 2)), i == (int)selectedAttack);
+                    }
             }
         }
 
@@ -181,7 +185,7 @@ namespace PikachusPearls.Code.GameStates
                     enemyAttackBuffer = enemyMon.GetRandomAttack();
                 }
 
-                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Down))
+                if (KeyboardInputManager.Downward(Keyboard.Key.Down))
                     switch (selectedMenu)
                     {
                         case FetchMenu.Menu:
@@ -195,7 +199,7 @@ namespace PikachusPearls.Code.GameStates
                             break;
                     }
 
-                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Up))
+                if (KeyboardInputManager.Downward(Keyboard.Key.Up))
                     switch (selectedMenu)
                     {
                         case FetchMenu.Menu:
@@ -208,7 +212,7 @@ namespace PikachusPearls.Code.GameStates
                             break;
                     }
 
-                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Right))
+                if (KeyboardInputManager.Downward(Keyboard.Key.Right))
                     switch (selectedMenu)
                     {
                         case FetchMenu.Menu:
@@ -221,7 +225,7 @@ namespace PikachusPearls.Code.GameStates
                             break;
                     }
 
-                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Left))
+                if (KeyboardInputManager.Downward(Keyboard.Key.Left))
                     switch (selectedMenu)
                     {
                         case FetchMenu.Menu:
@@ -234,7 +238,7 @@ namespace PikachusPearls.Code.GameStates
                             break;
                     }
 
-                if (KeyboardInputManager.Downward(SFML.Window.Keyboard.Key.Return))
+                if (KeyboardInputManager.Downward(Keyboard.Key.Return))
                 {
                     switch (selectedMenu)
                     {

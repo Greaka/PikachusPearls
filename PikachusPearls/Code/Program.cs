@@ -9,6 +9,8 @@ namespace PikachusPearls.Code
 {
     class Program
     {
+        public static Font Font { get; private set; }
+
         public const float fixedFps = 120F;
         public static GameTime gameTime { get; private set; }
         public static int inGameFrameCount { get; private set; }
@@ -25,6 +27,7 @@ namespace PikachusPearls.Code
 
         static void Main(string[] args)
         {
+            Font = new Font("Fonts/calibri.ttf");
             // initialize window and view
             win = new RenderWindow(new VideoMode(1280, 720), "Hadoken!!!");
             windowPosition = win.Position;
@@ -52,6 +55,8 @@ namespace PikachusPearls.Code
 
             while (running && win.IsOpen())
             {
+                View v = win.GetView();
+
                 windowPosition = win.Position;
                 KeyboardInputManager.Update();
 
@@ -79,14 +84,13 @@ namespace PikachusPearls.Code
                 float deltaPlusIdleTime = deltaTime;
                 while (deltaPlusIdleTime < (1F / fixedFps))
                 {
-                    gameTime.Update();
                     deltaPlusIdleTime += (float)gameTime.EllapsedTime.TotalSeconds;
                 }
 
                 //some fps Debug
                 debugText.DisplayedString = "real fps: " + (int) (1F/deltaPlusIdleTime) + ", theo fps: " +
                                             (int) (1F/deltaTime);
-                win.Draw(debugText);
+                gui.Draw(debugText);
 
                 win.Display();
             }
