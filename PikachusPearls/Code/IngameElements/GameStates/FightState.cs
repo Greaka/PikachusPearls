@@ -130,7 +130,7 @@ namespace PikachusPearls.Code.IngameElements.GameStates
             enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
             playersMon.GetSprite().Scale = new Vector2f(0.75f, 0.75f);
 
-            Vector2f enemyPos = new Vector2f(1550 * Background.Scale.X, 442 * Background.Scale.Y);
+            Vector2f enemyPos = new Vector2f(1550 * Background.Scale.X, 450 * Background.Scale.Y);
             enemyPos += new Vector2f(-enemyMon.GetSprite().Texture.Size.X * enemyMon.GetSprite().Scale.X / 2, -enemyMon.GetSprite().Texture.Size.Y * enemyMon.GetSprite().Scale.Y);
             enemyMon.GetSprite().Position = enemyPos;
 
