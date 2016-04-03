@@ -35,6 +35,15 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         protected Attack[] Attacks = new Attack[4];
         protected Sprite sprite;
 
+        public void Dispose()
+        {
+            foreach (Attack a in Attacks)
+                if (a != null)
+                    a.Dispose();
+            Attacks = null;
+            sprite.Dispose();
+        }
+
         public Attack GetRandomAttack()
         {
             Random rand = new Random();

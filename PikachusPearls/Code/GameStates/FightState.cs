@@ -131,6 +131,12 @@ namespace PikachusPearls.Code.GameStates
             enemyMon = enemy;
             this.player = player;
             playersMon = player.GetFirstMon();
+
+            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2, 0);
+            playersMon.GetSprite().Position = new Vector2f(0, (Background.Texture.Size.Y * Background.Scale.Y) / 2);
+
+            enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
+            playersMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
         }
 
         public void Draw(RenderWindow win)
@@ -262,7 +268,9 @@ namespace PikachusPearls.Code.GameStates
                                 case Selected.Attack:
                                     EnterAttacks();
                                     break;
-
+                                case Selected.Run:
+                                    EndFight();
+                                    break;
                                 default:
                                     break;
                             }
@@ -352,6 +360,7 @@ namespace PikachusPearls.Code.GameStates
             selected = Selected.None;
             selectedAttack = SelectedAttack.None;
             selectedMenu = FetchMenu.None;
+            enemyMon.Dispose();
         }
     }
 }

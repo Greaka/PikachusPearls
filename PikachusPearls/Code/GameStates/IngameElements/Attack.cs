@@ -15,6 +15,12 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Typing.Type Type { get; protected set; }
         Text text;
 
+        public void Dispose()
+        {
+            if (text != null)
+                text.Dispose();
+        }
+
         public void Draw(RenderWindow win, Vector2f Position, bool selected)
         {
             if(text == null)
