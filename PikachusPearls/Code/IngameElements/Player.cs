@@ -116,7 +116,7 @@ namespace PikachusPearls.Code.IngameElements
                 playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
 
-                if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) ActualTile + vector) * 64)).length) <= 1.1f)
+                if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) ActualTile) * 64)).length) > 63f)
                 {
                     inAnimation = false;
                     ActualTile = ActualTile + (Vector2i) vector;
