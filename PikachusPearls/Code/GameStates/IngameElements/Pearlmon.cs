@@ -64,14 +64,19 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             Name = newName;
         }
 
+        public float StatCalculation(float stat)
+        {
+            return 2 * stat * Lvl / 100 + 5;
+        }
+
+        public float HpCalculation(float Hp)
+        {
+            return (2 * Hp + 100) * Lvl / 100 + 10;
+        }
+
         public void Draw(RenderWindow win)
         {
             win.Draw(sprite);
-        }
-
-        public float StatCalculation()
-        {
-            return 0;
         }
     }
 
@@ -84,11 +89,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
             SpeciesName = "T-Rex";
             Lvl = level;
-            MaxHp = 100 + Lvl * 4;
+            MaxHp = HpCalculation(82);
             CurrentHp = MaxHp;
-            Attack = 10 + Lvl;
-            Defense = 10 + Lvl;
-            Speed = 5 + Lvl;
+            Attack = StatCalculation(121);
+            Defense = StatCalculation(119);
+            Speed = StatCalculation(71);
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
@@ -105,11 +110,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
             SpeciesName = "Knight";
             Lvl = level;
-            MaxHp = 100;
+            MaxHp = HpCalculation(76);
             CurrentHp = MaxHp;
-            Attack = 10;
-            Defense = 10;
-            Speed = 10;
+            Attack = StatCalculation(113);
+            Defense = StatCalculation(106);
+            Speed = StatCalculation(95);
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
