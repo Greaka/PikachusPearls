@@ -171,7 +171,7 @@ namespace PikachusPearls.Code.IngameElements
             Typing = new Typing(Typing.Type.Charisma);
             Attacks[0] = new BeOrNotToBe();
             Attacks[1] = new RomeoAndJuliet();
-            Attacks[2] = new Bite();
+            Attacks[2] = new SkullThrow();
             CountOfKnownAttacks = 3;
         }
     }

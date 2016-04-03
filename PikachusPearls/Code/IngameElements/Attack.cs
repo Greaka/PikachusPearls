@@ -148,4 +148,14 @@ namespace PikachusPearls.Code.IngameElements
             Type = Typing.Type.Normal;
         }
     }
+
+    public class SkullThrow : Attack
+    {
+        public SkullThrow()
+        {
+            Name = "Skull Throw";
+            Strength = 40;
+            Type = Typing.Type.Normal;
+        }
+    }
 }
