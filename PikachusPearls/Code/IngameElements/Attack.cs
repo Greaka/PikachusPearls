@@ -20,7 +20,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             if(text == null)
             {
-                text = new Text(Name, Program.Font, 20);
+                text = new Text(Name, Program.Font, 50);
             }
             text.Position = Position;
             text.Color = (selected) ? (Color.Red) : (Color.Black);
@@ -44,7 +44,7 @@ namespace PikachusPearls.Code.IngameElements
         public Headbutt()
         {
             Name = "Headbutt";
-            Strength = 45;
+            Strength = 60;
             Type = Typing.Type.Strength;
         }
     }
@@ -54,7 +54,7 @@ namespace PikachusPearls.Code.IngameElements
         public Scratch()
         {
             Name = "Scratch";
-            Strength = 30;
+            Strength = 45;
             Type = Typing.Type.Normal;
         }
     }
@@ -74,7 +74,7 @@ namespace PikachusPearls.Code.IngameElements
         public PayDay()
         {
             Name = "Pay Day";
-            Strength = 50;
+            Strength = 55;
             Type = Typing.Type.Intelligence;
         }
     }
@@ -83,7 +83,7 @@ namespace PikachusPearls.Code.IngameElements
     {
         public BeOrNotToBe()
         {
-            Name = "Be Or Not To Be";
+            Name = "BeOrNotToBe";
             Strength = 60;
             Type = Typing.Type.Charisma;
         }
@@ -94,9 +94,58 @@ namespace PikachusPearls.Code.IngameElements
         public SwordCut()
         {
             Name = "Sword Cut";
-            Strength = 60;
+            Strength = 65;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class RazorWind : Attack
+    {
+        public RazorWind()
+        {
+            Name = "Razor Wind";
+            Strength = 80;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Trick : Attack
+    {
+        public Trick()
+        {
+            Name = "Trick";
+            Strength = 40;
+            Type = Typing.Type.Intelligence;
+        }
+    }
+
+    public class RomeoAndJuliet : Attack
+    {
+        public RomeoAndJuliet()
+        {
+            Name = "Romeo And Juliet";
+            Strength = 90;
             Type = Typing.Type.Charisma;
         }
     }
 
+    public class RockTomb : Attack
+    {
+        public RockTomb()
+        {
+            Name = "Rock Tomb";
+            Strength = 70;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class RockSlide : Attack
+    {
+        public RockSlide()
+        {
+            Name = "Rock Slide";
+            Strength = 65;
+            Type = Typing.Type.Normal;
+        }
+    }
 }

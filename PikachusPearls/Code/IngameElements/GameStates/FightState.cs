@@ -130,7 +130,9 @@ namespace PikachusPearls.Code.IngameElements.GameStates
             enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
             playersMon.GetSprite().Scale = new Vector2f(0.75f, 0.75f);
 
-            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2 + 50, 50);
+            Vector2f enemyPos = new Vector2f(1550 * Background.Scale.X, 450 * Background.Scale.Y);
+            enemyPos += new Vector2f(-enemyMon.GetSprite().Texture.Size.X * enemyMon.GetSprite().Scale.X / 2, -enemyMon.GetSprite().Texture.Size.Y * enemyMon.GetSprite().Scale.Y);
+            enemyMon.GetSprite().Position = enemyPos;
 
             Vector2f playmonPos = new Vector2f((1130 / 2) * Background.Scale.X, Background.Texture.Size.Y * Background.Scale.Y - 50);
             playmonPos += new Vector2f(-playersMon.GetSprite().Texture.Size.X * playersMon.GetSprite().Scale.X / 2, -playersMon.GetSprite().Texture.Size.Y * playersMon.GetSprite().Scale.Y);
@@ -167,7 +169,7 @@ namespace PikachusPearls.Code.IngameElements.GameStates
                 if (selectedMenu == FetchMenu.Attacks)
                     for (int i = 0; i < playersMon.CountOfKnownAttacks; ++i)
                     {
-                        playersMon.GetAttack(i).Draw(win, (i <= 1) ? (Menubackground.Position + i * new Vector2f(Menubackground.Size.X / 2, 0)) : ((i == 2) ? (Menubackground.Position + new Vector2f(0, Menubackground.Size.Y)) : (Menubackground.Position + Menubackground.Size / 2)), i == (int)selectedAttack);
+                        playersMon.GetAttack(i).Draw(win, new Vector2f (0,50)+ ((i <= 1) ? (Menubackground.Position + i * new Vector2f(Menubackground.Size.X / 2, 0)) : ((i == 2) ? (Menubackground.Position + new Vector2f(0, Menubackground.Size.Y / 2)) : (Menubackground.Position + Menubackground.Size / 2))), i == (int)selectedAttack);
                     }
             }
         }
@@ -320,9 +322,9 @@ namespace PikachusPearls.Code.IngameElements.GameStates
                 }
                 EnterFetch();
 
-                if(playersMon.CurrentHp <= 0 || enemyMon.CurrentHp <= 0)
+                if(playersMon.CurrentHp < 1 || enemyMon.CurrentHp < 1)
                 {
-                    if (enemyMon.CurrentHp <= 0)
+                    if (enemyMon.CurrentHp < 1)
                         Console.WriteLine("You Win!!");
                     else
                         Console.WriteLine("You Lost … NOOOOOOB");

@@ -10,6 +10,9 @@ namespace PikachusPearls.Code.IngameElements
 
         T_Rex,
         Knight,
+        Steuerberater,
+        Shakespeare,
+        Triops,
 
         Count
     }
@@ -147,7 +150,7 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
-            Attacks[1] = new Scratch();
+            Attacks[1] = new RazorWind();
             Attacks[2] = new SwordCut();
             CountOfKnownAttacks = 3;
         }
@@ -167,7 +170,7 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Charisma);
             Attacks[0] = new BeOrNotToBe();
-            Attacks[1] = new Scratch();
+            Attacks[1] = new RomeoAndJuliet();
             Attacks[2] = new Bite();
             CountOfKnownAttacks = 3;
         }
@@ -187,8 +190,8 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Intelligence);
             Attacks[0] = new PayDay();
-            Attacks[1] = new Scratch();
-            Attacks[2] = new Bite();
+            Attacks[1] = new Trick();
+            Attacks[2] = new Bureaucracy();
             CountOfKnownAttacks = 3;
         }
     }
@@ -206,8 +209,8 @@ namespace PikachusPearls.Code.IngameElements
             Speed = StatCalculation(74);
             Exp = 10;
             Typing = new Typing(Typing.Type.Normal);
-            Attacks[0] = new Headbutt();
-            Attacks[1] = new Scratch();
+            Attacks[0] = new RockTomb();
+            Attacks[1] = new RockSlide();
             Attacks[2] = new Bite();
             CountOfKnownAttacks = 3;
         }
