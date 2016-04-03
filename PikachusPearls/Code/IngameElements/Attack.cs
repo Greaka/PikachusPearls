@@ -123,7 +123,7 @@ namespace PikachusPearls.Code.IngameElements
     {
         public RomeoAndJuliet()
         {
-            Name = "Romeo And Juliet";
+            Name = "Romeo&Juliet";
             Strength = 90;
             Type = Typing.Type.Charisma;
         }
@@ -145,6 +145,16 @@ namespace PikachusPearls.Code.IngameElements
         {
             Name = "Rock Slide";
             Strength = 65;
+            Type = Typing.Type.Normal;
+        }
+    }
+
+    public class SkullThrow : Attack
+    {
+        public SkullThrow()
+        {
+            Name = "Skull Throw";
+            Strength = 40;
             Type = Typing.Type.Normal;
         }
     }

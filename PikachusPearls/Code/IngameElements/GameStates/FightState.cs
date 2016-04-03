@@ -88,8 +88,8 @@ namespace PikachusPearls.Code.IngameElements.GameStates
             selectedAttack = SelectedAttack.None;
 
 
-            Menubackground = new RectangleShape(new SFML.Window.Vector2f(400, 300));
-            Menubackground.Position = new SFML.Window.Vector2f(880, 420);
+            Menubackground = new RectangleShape(new Vector2f(600, 300));
+            Menubackground.Position = new Vector2f(680, 420);
             Menubackground.OutlineColor = new Color(0, 0, 0);
             Menubackground.OutlineThickness = 2;
             Menu = new Sprite[]{ new Sprite(AssetManager.getTexture(AssetManager.TextureName.AttackButton)),
@@ -138,7 +138,32 @@ namespace PikachusPearls.Code.IngameElements.GameStates
             playmonPos += new Vector2f(-playersMon.GetSprite().Texture.Size.X * playersMon.GetSprite().Scale.X / 2, -playersMon.GetSprite().Texture.Size.Y * playersMon.GetSprite().Scale.Y);
             playersMon.GetSprite().Position = playmonPos;
 
-            playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.TRexBack);
+            switch (playersMon.SpeciesName)
+            {
+                case "T-Rex":
+                    playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.TRexBack);
+                    break;
+
+                case "Knight":
+                    playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.KnightBack);
+                    break;
+
+                case "Shakespeare":
+                    playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.ShakespeareBack);
+                    break;
+
+                case "Steuerberater":
+                    playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.SteuerberaterBack);
+                    break;
+
+                case "Triops":
+                    playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.TriopsBack);
+                    break;
+
+                default:
+                    break;
+            }
+
             playersMon.HpBar_Base.Position = Menubackground.Position + new Vector2f(0, -50);
             playersMon.HpBar_Current.Position = playersMon.HpBar_Base.Position;
         }
@@ -256,7 +281,7 @@ namespace PikachusPearls.Code.IngameElements.GameStates
                             selected += 3;
                             break;
                         case FetchMenu.Attacks:
-                            selectedAttack += 3;
+                            selectedAttack += (int)playersMon.CountOfKnownAttacks - 1;
                             break;
                         default:
                             break;

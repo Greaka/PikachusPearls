@@ -48,6 +48,8 @@ namespace PikachusPearls.Code.IngameElements
 
         public Sprite HpBar_Base { get; protected set; }
         public Sprite HpBar_Current { get; protected set; }
+        protected Text info;
+
 
         public Pearlmon(uint level)
         {
@@ -108,9 +110,13 @@ namespace PikachusPearls.Code.IngameElements
 
         public void Draw(RenderWindow win)
         {
+            if (info.Position.Y != HpBar_Base.Position.Y + HpBar_Base.Texture.Size.Y * HpBar_Base.Scale.Y)
+                info.Position = HpBar_Base.Position + new Vector2f(0, HpBar_Base.Texture.Size.Y * HpBar_Base.Scale.Y);
+
             win.Draw(sprite);
             win.Draw(HpBar_Base);
             win.Draw(HpBar_Current);
+            win.Draw(info);
         }
     }
 
@@ -122,6 +128,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
             SpeciesName = "T-Rex";
+            Name = SpeciesName;
             MaxHp = HpCalculation(82);
             CurrentHp = MaxHp;
             Attack = StatCalculation(121);
@@ -133,6 +140,8 @@ namespace PikachusPearls.Code.IngameElements
             Attacks[1] = new Scratch();
             Attacks[2] = new Bite();
             CountOfKnownAttacks = 3;
+            info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
+            info.Color = Color.Black;
         }
     }
 
@@ -142,6 +151,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
             SpeciesName = "Knight";
+            Name = SpeciesName;
             MaxHp = HpCalculation(76);
             CurrentHp = MaxHp;
             Attack = StatCalculation(113);
@@ -153,6 +163,8 @@ namespace PikachusPearls.Code.IngameElements
             Attacks[1] = new RazorWind();
             Attacks[2] = new SwordCut();
             CountOfKnownAttacks = 3;
+            info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
+            info.Color = Color.Black;
         }
     }
 
@@ -162,6 +174,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.ShakespeareFront));
             SpeciesName = "Shakespeare";
+            Name = SpeciesName;
             MaxHp = HpCalculation(62);
             CurrentHp = MaxHp;
             Attack = StatCalculation(103);
@@ -171,8 +184,10 @@ namespace PikachusPearls.Code.IngameElements
             Typing = new Typing(Typing.Type.Charisma);
             Attacks[0] = new BeOrNotToBe();
             Attacks[1] = new RomeoAndJuliet();
-            Attacks[2] = new Bite();
+            Attacks[2] = new SkullThrow();
             CountOfKnownAttacks = 3;
+            info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
+            info.Color = Color.Black;
         }
     }
 
@@ -182,6 +197,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SteuerberaterFront));
             SpeciesName = "Steuerberater";
+            Name = SpeciesName;
             MaxHp = HpCalculation(74);
             CurrentHp = MaxHp;
             Attack = StatCalculation(96);
@@ -193,6 +209,8 @@ namespace PikachusPearls.Code.IngameElements
             Attacks[1] = new Trick();
             Attacks[2] = new Bureaucracy();
             CountOfKnownAttacks = 3;
+            info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
+            info.Color = Color.Black;
         }
     }
 
@@ -202,6 +220,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TriopsFront));
             SpeciesName = "Triops";
+            Name = SpeciesName;
             MaxHp = HpCalculation(74);
             CurrentHp = MaxHp;
             Attack = StatCalculation(134);
@@ -213,6 +232,8 @@ namespace PikachusPearls.Code.IngameElements
             Attacks[1] = new RockSlide();
             Attacks[2] = new Bite();
             CountOfKnownAttacks = 3;
+            info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
+            info.Color = Color.Black;
         }
     }
 }
