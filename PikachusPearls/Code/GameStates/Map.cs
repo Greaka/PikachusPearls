@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.Window;
 using System.Drawing;
-using System.Globalization;
-using PikachusPearls.Code.GameStates.IngameElements;
 using PikachusPearls.Code.Utility;
 
 namespace PikachusPearls.Code.GameStates

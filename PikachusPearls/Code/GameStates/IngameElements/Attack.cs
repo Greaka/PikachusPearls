@@ -1,10 +1,5 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PikachusPearls.Code.GameStates.IngameElements
 {
@@ -39,7 +34,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Bite()
         {
             Name = "Bite";
-            Strength = 15;
+            Strength = 40;
             Type = Typing.Type.Strength;
         }
     }
@@ -49,7 +44,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Headbutt()
         {
             Name = "Headbutt";
-            Strength = 15;
+            Strength = 45;
             Type = Typing.Type.Strength;
         }
     }
@@ -59,7 +54,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Scratch()
         {
             Name = "Scratch";
-            Strength = 15;
+            Strength = 30;
             Type = Typing.Type.Normal;
         }
     }

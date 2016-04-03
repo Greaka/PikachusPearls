@@ -2,10 +2,6 @@
 using SFML.Graphics;
 using SFML.Window;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PikachusPearls.Code.GameStates
 {
@@ -124,7 +120,7 @@ namespace PikachusPearls.Code.GameStates
                 if (Background != null)
                     Background.Dispose();
 
-                Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+                Background = new Sprite(AssetManager.getTexture(texture));
                 Background.Scale = new Vector2f(1280f / Background.Texture.Size.X, 720f / Background.Texture.Size.Y);
             }
             State = EFightState.BeginAnimation;
@@ -132,11 +128,18 @@ namespace PikachusPearls.Code.GameStates
             this.player = player;
             playersMon = player.GetFirstMon();
 
-            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2, 0);
-            playersMon.GetSprite().Position = new Vector2f(0, (Background.Texture.Size.Y * Background.Scale.Y) / 2);
-
             enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
-            playersMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
+            playersMon.GetSprite().Scale = new Vector2f(0.75f, 0.75f);
+
+            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2 + 50, 50);
+
+            Vector2f playmonPos = new Vector2f((1130 / 2) * Background.Scale.X, Background.Texture.Size.Y * Background.Scale.Y - 50);
+            playmonPos += new Vector2f(-playersMon.GetSprite().Texture.Size.X * playersMon.GetSprite().Scale.X / 2, -playersMon.GetSprite().Texture.Size.Y * playersMon.GetSprite().Scale.Y);
+            playersMon.GetSprite().Position = playmonPos;
+
+            playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.TRexBack);
+            playersMon.HpBar_Base.Position = Menubackground.Position + new Vector2f(0, -50);
+            playersMon.HpBar_Current.Position = playersMon.HpBar_Base.Position;
         }
 
         public void Draw(RenderWindow win)
@@ -316,8 +319,17 @@ namespace PikachusPearls.Code.GameStates
                         enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
                     }
                 }
-
                 EnterFetch();
+
+                if(playersMon.CurrentHp <= 0 || enemyMon.CurrentHp <= 0)
+                {
+                    if (enemyMon.CurrentHp <= 0)
+                        Console.WriteLine("You Win!!");
+                    else
+                        Console.WriteLine("You Lost … NOOOOOOB");
+
+                    EndFight();
+                }
             }
             if (phase == Phase.None)
                 EndFight();
