@@ -2,10 +2,6 @@
 using SFML.Graphics;
 using SFML.Window;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PikachusPearls.Code.GameStates
 {
@@ -142,6 +138,8 @@ namespace PikachusPearls.Code.GameStates
             playersMon.GetSprite().Position = playmonPos;
 
             playersMon.GetSprite().Texture = AssetManager.getTexture(AssetManager.TextureName.TRexBack);
+            playersMon.HpBar_Base.Position = Menubackground.Position + new Vector2f(0, -50);
+            playersMon.HpBar_Current.Position = playersMon.HpBar_Base.Position;
         }
 
         public void Draw(RenderWindow win)

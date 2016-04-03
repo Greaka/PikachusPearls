@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.Remoting.Channels;
-using PikachusPearls.Code.GameStates;
+﻿using PikachusPearls.Code.GameStates;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
