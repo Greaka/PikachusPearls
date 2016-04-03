@@ -102,6 +102,11 @@ namespace PikachusPearls.Code.GameStates
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.ItemsButton)),
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.RunButton))};
 
+            Menu[0].Position = Menubackground.Position;
+            Menu[1].Position = Menubackground.Position + new Vector2f(200, 0);
+            Menu[2].Position = Menubackground.Position + new Vector2f(0, 150);
+            Menu[3].Position = Menubackground.Position + new Vector2f(200, 150);
+
             SelectedShader = new Shader(null, "Shaders/SelectedShader.frag");
             SelectedState = new RenderStates(SelectedShader);
         }
@@ -115,8 +120,13 @@ namespace PikachusPearls.Code.GameStates
         public void EnterState(AssetManager.TextureName texture, Player player, Pearlmon enemy)
         {
             if (Background == null || !AssetManager.getTexture(texture).Equals(Background.Texture))
-                Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+            {
+                if (Background != null)
+                    Background.Dispose();
 
+                Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+                Background.Scale = new Vector2f(1280f / Background.Texture.Size.X, 720f / Background.Texture.Size.Y);
+            }
             State = EFightState.BeginAnimation;
             enemyMon = enemy;
             this.player = player;
