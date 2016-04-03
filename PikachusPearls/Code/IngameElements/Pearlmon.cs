@@ -183,8 +183,8 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Charisma);
             Attacks[0] = new BeOrNotToBe();
-            Attacks[1] = new RomeoAndJulia();
-            Attacks[2] = new Bite();
+            Attacks[1] = new RomeoAndJuliet();
+            Attacks[2] = new SkullThrow();
             CountOfKnownAttacks = 3;
             info = new Text(Name + " Lvl: " + Lvl, Program.Font, 20);
             info.Color = Color.Black;
