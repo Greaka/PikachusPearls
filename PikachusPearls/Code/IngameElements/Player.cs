@@ -68,7 +68,7 @@ namespace PikachusPearls.Code.IngameElements
             };
             inAnimation = false;
             map = _map;
-            Pearlmons[0] = new T_Rex(15);
+            Pearlmons[0] = new Shakespeare(15);
         }
 
         public Pearlmon GetFirstMon()

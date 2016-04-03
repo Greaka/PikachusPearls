@@ -47,6 +47,18 @@ namespace PikachusPearls.Code.IngameElements.GameStates
                     fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new Knight((uint)rnd.Next(1, 10)));
                     break;
 
+                case Existing_Pearlmon.Shakespeare:
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new Shakespeare((uint)rnd.Next(1, 10)));
+                    break;
+
+                case Existing_Pearlmon.Steuerberater:
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new Steuerberater((uint)rnd.Next(1, 10)));
+                    break;
+
+                case Existing_Pearlmon.Triops:
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new Triops((uint)rnd.Next(1, 10)));
+                    break;
+
                 default:
                     fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new T_Rex(2));
                     break;
