@@ -74,15 +74,19 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 switch (moveDirection)
                 {
                     case Direction.down:
+                        playerSprite.upperLeftCorner = new Vector2i(0, 0);
                         vector = Vector2.Down;
                         break;
                     case Direction.up:
+                        playerSprite.upperLeftCorner = new Vector2i(0, 96);
                         vector = Vector2.Up;
                         break;
                     case Direction.left:
+                        playerSprite.upperLeftCorner = new Vector2i(0, 288);
                         vector = Vector2.Left;
                         break;
                     case Direction.right:
+                        playerSprite.upperLeftCorner = new Vector2i(0, 192);
                         vector = Vector2.Right;
                         break;
                     case Direction.none:
