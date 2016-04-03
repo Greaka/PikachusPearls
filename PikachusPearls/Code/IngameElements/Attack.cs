@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates.IngameElements
+namespace PikachusPearls.Code.IngameElements
 {
     public abstract class Attack
     {

@@ -1,9 +1,8 @@
-﻿using PikachusPearls.Code.GameStates.IngameElements;
+﻿using System;
 using SFML.Graphics;
 using SFML.Window;
-using System;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements.GameStates
 {
     class FightState
     {

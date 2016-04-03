@@ -1,4 +1,4 @@
-﻿namespace PikachusPearls.Code.GameStates
+﻿namespace PikachusPearls.Code.IngameElements.GameStates
 {
     enum GameState
     {
