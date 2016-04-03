@@ -229,7 +229,10 @@ namespace PikachusPearls.Code.GameStates
         {
             Vector2f viewCenter = window.GetView().Center;
 
-            //hi
+            Vector2 tpos = player.Position + new Vector2f(0, 48);
+            tpos = tpos / 64;
+
+            int y = (int)(tpos.Y + 0.5f);
 
             int viewLeft = (int)(window.GetView().Size.X / 128 + 2);
             int viewBottom = (int)(window.GetView().Size.Y / 128 + 2);
@@ -246,15 +249,28 @@ namespace PikachusPearls.Code.GameStates
                 {
                     if (map[i, j] != null)
                         map[i, j].Draw(window);
+                }
+            }
 
-                    
+            //window.Draw(player);
+
+            bool playerDrawn = false;
+
+            for (int j = top; j < bottom; j++)
+            {
+                 for (int i = startLeft; i < endRight; i++)
+                    {
+                    if(j == y && !playerDrawn)
+                    {
+                        window.Draw(player);
+                        playerDrawn = true;
+                    }
 
                     if (map[i, j] != null)
                         map[i, j].DrawForeGround(window);
                 }
             }
 
-            window.Draw(player);
         }
 
     }
