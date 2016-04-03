@@ -1,8 +1,8 @@
-﻿using SFML.Graphics;
-using System;
+﻿using System;
+using SFML.Graphics;
 using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates.IngameElements
+namespace PikachusPearls.Code.IngameElements
 {
     public enum Existing_Pearlmon
     {
@@ -146,6 +146,66 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             Speed = StatCalculation(95);
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
+            Attacks[0] = new Headbutt();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new SwordCut();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Shakespeare : Pearlmon
+    {
+        public Shakespeare(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.ShakespeareFront));
+            SpeciesName = "Shakespeare";
+            MaxHp = HpCalculation(62);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(103);
+            Defense = StatCalculation(86);
+            Speed = StatCalculation(135);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Charisma);
+            Attacks[0] = new BeOrNotToBe();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Steuerberater : Pearlmon
+    {
+        public Steuerberater(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.SteuerberaterFront));
+            SpeciesName = "Steuerberater";
+            MaxHp = HpCalculation(74);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(96);
+            Defense = StatCalculation(111);
+            Speed = StatCalculation(124);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Intelligence);
+            Attacks[0] = new PayDay();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Triops : Pearlmon
+    {
+        public Triops(uint level) : base(level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TriopsFront));
+            SpeciesName = "Triops";
+            MaxHp = HpCalculation(74);
+            CurrentHp = MaxHp;
+            Attack = StatCalculation(134);
+            Defense = StatCalculation(165);
+            Speed = StatCalculation(74);
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Normal);
             Attacks[0] = new Headbutt();
             Attacks[1] = new Scratch();
             Attacks[2] = new Bite();

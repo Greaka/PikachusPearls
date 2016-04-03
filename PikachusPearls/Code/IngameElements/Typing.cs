@@ -1,4 +1,4 @@
-﻿namespace PikachusPearls.Code.GameStates.IngameElements
+﻿namespace PikachusPearls.Code.IngameElements
 {
     public class Typing
     {

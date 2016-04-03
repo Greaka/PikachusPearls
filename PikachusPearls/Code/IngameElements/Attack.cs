@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates.IngameElements
+namespace PikachusPearls.Code.IngameElements
 {
     public abstract class Attack
     {
@@ -88,4 +88,15 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             Type = Typing.Type.Charisma;
         }
     }
+
+    public class SwordCut : Attack
+    {
+        public SwordCut()
+        {
+            Name = "Sword Cut";
+            Strength = 60;
+            Type = Typing.Type.Charisma;
+        }
+    }
+
 }

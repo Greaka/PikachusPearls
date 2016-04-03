@@ -1,7 +1,7 @@
 ﻿using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements.GameStates
 {
     interface IGameState
     {

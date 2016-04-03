@@ -1,10 +1,10 @@
 ﻿using System;
-using SFML.Graphics;
-using SFML.Window;
 using System.Drawing;
 using PikachusPearls.Code.Utility;
+using SFML.Graphics;
+using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements
 {
     public class Map
     {
