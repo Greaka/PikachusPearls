@@ -19,7 +19,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         private Map map;
         AnimatedSprite playerSprite;
         Texture playerTex;
-        Pearlmon[] Pearlmons;
+        Pearlmon[] Pearlmons = new Pearlmon[6];
         private bool _inAnimation;
         private GameTime temp;
         readonly Vector2 posOffset = new Vector2(0, -32f);
@@ -68,6 +68,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             };
             inAnimation = false;
             map = _map;
+            Pearlmons[0] = new T_Rex(15);
         }
 
         public Pearlmon GetFirstMon()

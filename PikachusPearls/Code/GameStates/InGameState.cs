@@ -36,7 +36,22 @@ namespace PikachusPearls.Code.GameStates
         void EnterFightState()
         {
             Console.Out.WriteLine("FIGHT!");
-            //fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new Pearlmon());
+            Existing_Pearlmon encountered = (Existing_Pearlmon) rnd.Next(0, (int)Existing_Pearlmon.Count);
+
+            switch (encountered)
+            {
+                case Existing_Pearlmon.T_Rex:
+                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new T_Rex((uint)rnd.Next(1, 10)));
+                    break;
+
+                case Existing_Pearlmon.Knight:
+                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new Knight((uint)rnd.Next(1, 10)));
+                    break;
+
+                default:
+                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new T_Rex(2));
+                    break;
+            }
         }
 
         public GameState Update(GameTime gameTime)
