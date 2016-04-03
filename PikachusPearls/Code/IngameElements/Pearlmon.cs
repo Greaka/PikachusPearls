@@ -147,7 +147,7 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
-            Attacks[1] = new Scratch();
+            Attacks[1] = new RazorWind();
             Attacks[2] = new SwordCut();
             CountOfKnownAttacks = 3;
         }
@@ -167,7 +167,7 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Charisma);
             Attacks[0] = new BeOrNotToBe();
-            Attacks[1] = new Scratch();
+            Attacks[1] = new RomeoAndJulia();
             Attacks[2] = new Bite();
             CountOfKnownAttacks = 3;
         }
@@ -187,8 +187,8 @@ namespace PikachusPearls.Code.IngameElements
             Exp = 10;
             Typing = new Typing(Typing.Type.Intelligence);
             Attacks[0] = new PayDay();
-            Attacks[1] = new Scratch();
-            Attacks[2] = new Bite();
+            Attacks[1] = new Trick();
+            Attacks[2] = new Bureaucracy();
             CountOfKnownAttacks = 3;
         }
     }
