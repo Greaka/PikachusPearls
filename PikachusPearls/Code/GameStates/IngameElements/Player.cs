@@ -62,7 +62,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Player(Map _map, Vector2f tilePosition)
         {
             ActualTile = (Vector2) tilePosition;
-            playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.1f, 3, new Vector2i(64, 96))
+            playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.075f, 4, new Vector2i(64, 96))
             {
                 Position = tilePosition * 64 + (Vector2f) posOffset
             };
