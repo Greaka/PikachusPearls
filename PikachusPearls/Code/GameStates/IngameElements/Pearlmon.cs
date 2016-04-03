@@ -7,6 +7,17 @@ using System.Threading.Tasks;
 
 namespace PikachusPearls.Code.GameStates.IngameElements
 {
+    public enum Existing_Pearlmon
+    {
+        None = -1,
+
+        T_Rex,
+        Knight,
+
+        Count
+    }
+
+
     public abstract class Pearlmon
     {
         public string SpeciesName { get; protected set; }
@@ -51,6 +62,48 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public void Draw(RenderWindow win)
         {
             win.Draw(sprite);
+        }
+    }
+
+    class T_Rex : Pearlmon
+    {
+        public T_Rex(uint level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
+            SpeciesName = "T-Rex";
+            MaxHp = 100;
+            CurrentHp = MaxHp;
+            Attack = 10;
+            Defense = 10;
+            Speed = 10;
+            Lvl = level;
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Strength);
+            Attacks[0] = new Headbutt();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
+        }
+    }
+
+    class Knight : Pearlmon
+    {
+        public Knight(uint level)
+        {
+            sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
+            SpeciesName = "Knight";
+            MaxHp = 100;
+            CurrentHp = MaxHp;
+            Attack = 10;
+            Defense = 10;
+            Speed = 10;
+            Lvl = level;
+            Exp = 10;
+            Typing = new Typing(Typing.Type.Strength);
+            Attacks[0] = new Headbutt();
+            Attacks[1] = new Scratch();
+            Attacks[2] = new Bite();
+            CountOfKnownAttacks = 3;
         }
     }
 }

@@ -114,7 +114,7 @@ namespace PikachusPearls.Code.GameStates
         /// <param name="enemy">the encountered enemy</param>
         public void EnterState(AssetManager.TextureName texture, Player player, Pearlmon enemy)
         {
-            if (!AssetManager.getTexture(texture).Equals(Background.Texture))
+            if (Background == null || !AssetManager.getTexture(texture).Equals(Background.Texture))
                 Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
 
             State = EFightState.BeginAnimation;
@@ -125,6 +125,10 @@ namespace PikachusPearls.Code.GameStates
 
         public void Draw(RenderWindow win)
         {
+            View v = win.GetView();
+            v.Center = v.Size / 2;
+            win.SetView(v);
+
             win.Draw(Background);
             enemyMon.Draw(win);
             playersMon.Draw(win);
