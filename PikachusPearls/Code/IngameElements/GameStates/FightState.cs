@@ -281,7 +281,7 @@ namespace PikachusPearls.Code.IngameElements.GameStates
                             selected += 3;
                             break;
                         case FetchMenu.Attacks:
-                            selectedAttack += (int)playersMon.CountOfKnownAttacks - 1;
+                            selectedAttack += playersMon.CountOfKnownAttacks - 1;
                             break;
                         default:
                             break;

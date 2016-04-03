@@ -68,7 +68,7 @@ namespace PikachusPearls.Code.IngameElements
             };
             inAnimation = false;
             map = _map;
-            Pearlmons[0] = new Shakespeare(15);
+            Pearlmons[0] = new Steuerberater(15);
         }
 
         public Pearlmon GetFirstMon()
