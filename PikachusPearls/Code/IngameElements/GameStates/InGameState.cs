@@ -1,11 +1,10 @@
 ﻿using System;
-using PikachusPearls.Code.GameStates.IngameElements;
+using System.Drawing;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
-using System.Drawing;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements.GameStates
 {
     class InGameState : IGameState
     {

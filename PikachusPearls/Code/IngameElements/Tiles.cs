@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements
 {
     class Tiles
     {

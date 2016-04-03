@@ -1,4 +1,4 @@
-﻿using PikachusPearls.Code.GameStates;
+﻿using PikachusPearls.Code.IngameElements.GameStates;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;

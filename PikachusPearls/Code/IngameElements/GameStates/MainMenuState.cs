@@ -2,7 +2,7 @@
 using SFML.Graphics;
 using SFML.Window;
 
-namespace PikachusPearls.Code.GameStates
+namespace PikachusPearls.Code.IngameElements.GameStates
 {
     class MainMenuState : IGameState
     {
