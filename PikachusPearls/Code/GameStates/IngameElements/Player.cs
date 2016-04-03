@@ -22,7 +22,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         Pearlmon[] Pearlmons;
         private bool _inAnimation;
         private GameTime temp;
-        readonly Vector2 posOffset = new Vector2(-32f, -48f);
+        readonly Vector2 posOffset = new Vector2(0, -32f);
         private Vector2i actualTile;
 
         private bool inAnimation
@@ -70,7 +70,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
             else
             {
-                Vector2f vector = Vector2.Zero;
+                Vector2 vector = Vector2.Zero;
                 switch (moveDirection)
                 {
                     case Direction.down:
@@ -97,8 +97,14 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
 
-                if ((((Vector2) playerSprite.Position - posOffset)/64) != actualTile)
+                if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) actualTile + vector) * 64)).length) <= 1f)
+                //if ((Math.Abs((float) (((Vector2) playerSprite.Position - posOffset)/64f).X) - ((Vector2) actualTile + vector).X) <= 1/512f &&
+                    //(Math.Abs((float) (((Vector2) playerSprite.Position - posOffset)/64f).Y) - ((Vector2) actualTile + vector).Y) <= 1/512f)
+                {
+                    actualTile = actualTile + (Vector2i) vector;
+                    playerSprite.Position = (Vector2) actualTile * 64 + posOffset;
                     inAnimation = false;
+                }
             }
         }
 
@@ -139,7 +145,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
-                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Up))
+                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Right))
                 {
                     right = true;
                     direction = Direction.right;
