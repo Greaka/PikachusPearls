@@ -1,4 +1,7 @@
-﻿using PikachusPearls.Code.IngameElements.GameStates;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using PikachusPearls.Code.IngameElements.GameStates;
 using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
@@ -10,6 +13,8 @@ namespace PikachusPearls.Code
         public static Font Font { get; private set; }
 
         public const float fixedFps = 120F;
+        static List<int> debugFps;
+        static List<int> theoFps;
         public static GameTime gameTime { get; private set; }
         public static int inGameFrameCount { get; private set; }
 
@@ -25,6 +30,8 @@ namespace PikachusPearls.Code
 
         static void Main(string[] args)
         {
+            debugFps = new List<int>();
+            theoFps = new List<int>();
             Font = new Font("Fonts/calibri.ttf");
             // initialize window and view
             win = new RenderWindow(new VideoMode(1280, 720), "Hadoken!!!");
@@ -86,8 +93,35 @@ namespace PikachusPearls.Code
                 }
 
                 //some fps Debug
-                debugText.DisplayedString = "real fps: " + (int) (1F/deltaPlusIdleTime) + ", theo fps: " +
-                                            (int) (1F/deltaTime);
+                if (debugFps.Count < fixedFps * 3)
+                {
+                    debugFps.Add((int)(1F / deltaPlusIdleTime));
+                }
+                else
+                {
+                    for (int i = 1; i < debugFps.Count; i++)
+                    {
+                        debugFps[i - 1] = debugFps[i];
+                    }
+                    debugFps[debugFps.Count - 1] = (int)(1F / deltaPlusIdleTime);
+                }
+                if (theoFps.Count < 10000)
+                {
+                    theoFps.Add((int)(1F / deltaTime));
+                }
+                else
+                {
+                    for (int i = 1; i < theoFps.Count; i++)
+                    {
+                        theoFps[i - 1] = theoFps[i];
+                    }
+                    theoFps[theoFps.Count - 1] = (int)(1F / deltaTime);
+                }
+                
+                var rFps = (int)Helper.Median(debugFps);
+                var tFps = (int)Helper.Median(theoFps);
+                debugText.DisplayedString = "real fps: " + rFps + ", theo fps: " + tFps;
+                
                 gui.Draw(debugText);
 
                 win.Display();
