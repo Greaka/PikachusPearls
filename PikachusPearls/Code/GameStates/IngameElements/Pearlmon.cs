@@ -46,6 +46,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             return Attacks[index];
         }
 
+        public Sprite GetSprite()
+        {
+            return sprite;
+        }
+
         public void BeAttackedByWith(Pearlmon opponent, Attack attack)
         {
             float dmg = ((opponent.Typing.Contains(attack.Type)) ? (1.5f) : (1)) * opponent.Attack * attack.Strength - Defense;
@@ -63,7 +68,14 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             win.Draw(sprite);
         }
+
+        public float StatCalculation()
+        {
+            return 0;
+        }
     }
+
+   
 
     class T_Rex : Pearlmon
     {
@@ -71,12 +83,12 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.TRexFront));
             SpeciesName = "T-Rex";
-            MaxHp = 100;
-            CurrentHp = MaxHp;
-            Attack = 10;
-            Defense = 10;
-            Speed = 10;
             Lvl = level;
+            MaxHp = 100 + Lvl * 4;
+            CurrentHp = MaxHp;
+            Attack = 10 + Lvl;
+            Defense = 10 + Lvl;
+            Speed = 5 + Lvl;
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
@@ -92,12 +104,12 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         {
             sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.KnightFront));
             SpeciesName = "Knight";
+            Lvl = level;
             MaxHp = 100;
             CurrentHp = MaxHp;
             Attack = 10;
             Defense = 10;
             Speed = 10;
-            Lvl = level;
             Exp = 10;
             Typing = new Typing(Typing.Type.Strength);
             Attacks[0] = new Headbutt();
