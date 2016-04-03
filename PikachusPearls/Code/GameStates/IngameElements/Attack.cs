@@ -44,7 +44,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Headbutt()
         {
             Name = "Headbutt";
-            Strength = 45;
+            Strength = 60;
             Type = Typing.Type.Strength;
         }
     }
@@ -54,7 +54,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Scratch()
         {
             Name = "Scratch";
-            Strength = 30;
+            Strength = 45;
             Type = Typing.Type.Normal;
         }
     }
@@ -74,7 +74,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public PayDay()
         {
             Name = "Pay Day";
-            Strength = 50;
+            Strength = 55;
             Type = Typing.Type.Intelligence;
         }
     }
@@ -94,9 +94,38 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public SwordCut()
         {
             Name = "Sword Cut";
-            Strength = 60;
-            Type = Typing.Type.Charisma;
+            Strength = 65;
+            Type = Typing.Type.Strength;
         }
     }
 
+    public class RazorWind : Attack
+    {
+        public RazorWind()
+        {
+            Name = "Razor Wind";
+            Strength = 80;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class Trick : Attack
+    {
+        public Trick()
+        {
+            Name = "Trick";
+            Strength = 40;
+            Type = Typing.Type.Intelligence;
+        }
+    }
+
+    public class RomeoAndJulia : Attack
+    {
+        public RomeoAndJulia()
+        {
+            Name = "Romeo And Julia";
+            Strength = 90;
+            Type = Typing.Type.Charisma;
+        }
+    }
 }
