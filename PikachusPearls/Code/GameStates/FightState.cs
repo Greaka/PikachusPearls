@@ -321,8 +321,17 @@ namespace PikachusPearls.Code.GameStates
                         enemyMon.BeAttackedByWith(playersMon, playerAttackBuffer);
                     }
                 }
-
                 EnterFetch();
+
+                if(playersMon.CurrentHp <= 0 || enemyMon.CurrentHp <= 0)
+                {
+                    if (enemyMon.CurrentHp <= 0)
+                        Console.WriteLine("You Win!!");
+                    else
+                        Console.WriteLine("You Lost … NOOOOOOB");
+
+                    EndFight();
+                }
             }
             if (phase == Phase.None)
                 EndFight();
