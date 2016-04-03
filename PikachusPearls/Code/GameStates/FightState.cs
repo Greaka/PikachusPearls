@@ -132,11 +132,11 @@ namespace PikachusPearls.Code.GameStates
             this.player = player;
             playersMon = player.GetFirstMon();
 
-            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2, 0);
-            playersMon.GetSprite().Position = new Vector2f(0, (Background.Texture.Size.Y * Background.Scale.Y) / 2);
+            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2 + 50, 50);
+            playersMon.GetSprite().Position = new Vector2f(25, (Background.Texture.Size.Y * Background.Scale.Y) / 2 - 100);
 
             enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
-            playersMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
+            playersMon.GetSprite().Scale = new Vector2f(0.75f, 0.75f);
         }
 
         public void Draw(RenderWindow win)
