@@ -83,7 +83,7 @@ namespace PikachusPearls.Code.IngameElements
     {
         public BeOrNotToBe()
         {
-            Name = "Be Or Not To Be";
+            Name = "BeOrNotToBe";
             Strength = 60;
             Type = Typing.Type.Charisma;
         }
@@ -119,11 +119,11 @@ namespace PikachusPearls.Code.IngameElements
         }
     }
 
-    public class RomeoAndJulia : Attack
+    public class RomeoAndJuliet : Attack
     {
-        public RomeoAndJulia()
+        public RomeoAndJuliet()
         {
-            Name = "Romeo And Julia";
+            Name = "Romeo And Juliet";
             Strength = 90;
             Type = Typing.Type.Charisma;
         }
