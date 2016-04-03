@@ -172,6 +172,7 @@ namespace PikachusPearls.Code.GameStates
                     {
                         tileSprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.GrassPlain));
                         foreGround = new Sprite(AssetManager.getTexture(AssetManager.TextureName.GrassHigh));
+                        foreGround.Position = position;
                         walkable = true;
                         break;
                     }
