@@ -170,7 +170,7 @@ namespace PikachusPearls.Code.GameStates
                 if (selectedMenu == FetchMenu.Attacks)
                     for (int i = 0; i < playersMon.CountOfKnownAttacks; ++i)
                     {
-                        playersMon.GetAttack(i).Draw(win, (i <= 1) ? (Menubackground.Position + i * new Vector2f(Menubackground.Size.X / 2, 0)) : ((i == 2) ? (Menubackground.Position + new Vector2f(0, Menubackground.Size.Y)) : (Menubackground.Position + Menubackground.Size / 2)), i == (int)selectedAttack);
+                        playersMon.GetAttack(i).Draw(win, new Vector2f (0,50)+ ((i <= 1) ? (Menubackground.Position + i * new Vector2f(Menubackground.Size.X / 2, 0)) : ((i == 2) ? (Menubackground.Position + new Vector2f(0, Menubackground.Size.Y / 2)) : (Menubackground.Position + Menubackground.Size / 2))), i == (int)selectedAttack);
                     }
             }
         }
@@ -323,9 +323,9 @@ namespace PikachusPearls.Code.GameStates
                 }
                 EnterFetch();
 
-                if(playersMon.CurrentHp <= 0 || enemyMon.CurrentHp <= 0)
+                if(playersMon.CurrentHp < 1 || enemyMon.CurrentHp < 1)
                 {
-                    if (enemyMon.CurrentHp <= 0)
+                    if (enemyMon.CurrentHp < 1)
                         Console.WriteLine("You Win!!");
                     else
                         Console.WriteLine("You Lost … NOOOOOOB");
