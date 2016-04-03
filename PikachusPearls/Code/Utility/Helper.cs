@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SFML.Graphics;
 
 namespace PikachusPearls.Code.Utility
@@ -17,6 +18,16 @@ namespace PikachusPearls.Code.Utility
         public static float LerpClamp(float from, float to, float t)
         {
             return Lerp(from, to, Clamp(t, 0F, 1F));
+        }
+
+        public static float Median(List<int> array)
+        {
+            float median = 0;
+            for (int i = 0; i < array.Count; i++)
+            {
+                median += array[i];
+            }
+            return median/array.Count;
         }
 
         public static Color Lerp(Color from, Color to, float t)
