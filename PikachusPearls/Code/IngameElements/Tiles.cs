@@ -17,7 +17,7 @@ namespace PikachusPearls.Code.IngameElements
             return walkable;
         }
 
-        void SetForeGround(AssetManager.TextureName t)
+        public void SetForeGround(AssetManager.TextureName t)
         {
             foreGround = new Sprite(AssetManager.getTexture(t));
             foreGround.Position = tileSprite.Position;
