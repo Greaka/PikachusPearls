@@ -113,7 +113,7 @@ namespace PikachusPearls.Code
             TriopsBack,
             TriopsFront,
             House, 
-            Attackscreen
+            Attackscreen,
             Hp_Current,
             Hp_Base
         }
