@@ -23,7 +23,21 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         private bool _inAnimation;
         private GameTime temp;
         readonly Vector2 posOffset = new Vector2(0, -32f);
-        private Vector2i actualTile;
+        private Vector2i _actualTile;
+
+        public delegate void NewPlayerPosition(Vector2i newPosition);
+
+        public event NewPlayerPosition OnNewPlayerPosition;
+
+        private Vector2i ActualTile
+        {
+            get { return _actualTile; }
+            set
+            {
+                _actualTile = value;
+                OnNewPlayerPosition?.Invoke(value);
+            }
+        }
 
         private bool inAnimation
         {
@@ -47,7 +61,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
 
         public Player(Map _map, Vector2f tilePosition)
         {
-            actualTile = (Vector2) tilePosition;
+            ActualTile = (Vector2) tilePosition;
             playerSprite = new AnimatedSprite(AssetManager.getTexture(AssetManager.TextureName.PlayerSpriteSheet), 0.2f, 3, new Vector2i(64, 96))
             {
                 Position = tilePosition * 64 + (Vector2f) posOffset
@@ -101,11 +115,11 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 playerSprite.Position += (Vector2f) (vector * speed);
                 playerSprite.updateFrame(gameTime);
 
-                if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) actualTile + vector) * 64)).length) <= 1f)
+                if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) ActualTile + vector) * 64)).length) <= 1.1f)
                 {
-                    actualTile = actualTile + (Vector2i) vector;
-                    playerSprite.Position = (Vector2) actualTile * 64 + posOffset;
                     inAnimation = false;
+                    ActualTile = ActualTile + (Vector2i) vector;
+                    playerSprite.Position = (Vector2) ActualTile * 64 + posOffset;
                 }
             }
         }
@@ -120,7 +134,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             var animation = playerSprite.upperLeftCorner;
             if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
             {
-                if (map.IsWalkable(actualTile + (Vector2i) Vector2.Up))
+                if (map.IsWalkable(ActualTile + (Vector2i) Vector2.Up))
                 {
                     up = true;
                     direction = Direction.up;
@@ -129,7 +143,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
             {
-                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Down))
+                if (map.IsWalkable(ActualTile + (Vector2i)Vector2.Down))
                 {
                     down = true;
                     direction = Direction.down;
@@ -138,7 +152,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
-                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Left))
+                if (map.IsWalkable(ActualTile + (Vector2i)Vector2.Left))
                 {
                     left = true;
                     direction = Direction.left;
@@ -147,7 +161,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
-                if (map.IsWalkable(actualTile + (Vector2i)Vector2.Right))
+                if (map.IsWalkable(ActualTile + (Vector2i)Vector2.Right))
                 {
                     right = true;
                     direction = Direction.right;

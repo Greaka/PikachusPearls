@@ -14,7 +14,8 @@ namespace PikachusPearls.Code.GameStates
         Sprite foreGround;
         bool walkable;
 
-        public Sprite getSprite { get { return tileSprite; } }
+        public Sprite getSprite => tileSprite;
+        public Sprite getForeGround => foreGround;
 
         public bool getWalkable()
         {

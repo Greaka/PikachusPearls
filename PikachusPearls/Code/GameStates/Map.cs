@@ -33,6 +33,10 @@ namespace PikachusPearls.Code.GameStates
 
         public bool IsWalkable(Vector2i v) => map[v.X, v.Y].getWalkable();
 
+        public Sprite GetSprite(Vector2i v) => map[v.X, v.Y].getSprite;
+
+        public Sprite GetForeground(Vector2i v) => map[v.X, v.Y].getForeGround;
+
         public Map(Bitmap mask)
         {
 
