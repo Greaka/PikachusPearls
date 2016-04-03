@@ -123,7 +123,7 @@ namespace PikachusPearls.Code.IngameElements
     {
         public RomeoAndJuliet()
         {
-            Name = "Romeo And Juliet";
+            Name = "RomeoAndJuliet";
             Strength = 90;
             Type = Typing.Type.Charisma;
         }
