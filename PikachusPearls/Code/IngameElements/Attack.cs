@@ -20,7 +20,7 @@ namespace PikachusPearls.Code.IngameElements
         {
             if(text == null)
             {
-                text = new Text(Name, Program.Font, 20);
+                text = new Text(Name, Program.Font, 50);
             }
             text.Position = Position;
             text.Color = (selected) ? (Color.Red) : (Color.Black);
