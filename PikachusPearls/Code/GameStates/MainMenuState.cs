@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using PikachusPearls.Code.Utility;
+﻿using PikachusPearls.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
 
