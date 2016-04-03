@@ -58,6 +58,7 @@ namespace PikachusPearls.Code
             textures.Add(TextureName.ShakespeareBack, new Texture("Textures/Shakespeare_Back.png"));
             textures.Add(TextureName.ShakespeareFront, new Texture("Textures/Shakespeare_Front.png"));
             textures.Add(TextureName.SteuerberaterBack, new Texture("Textures/Steuerberater_Back.png"));
+            textures.Add(TextureName.Enemy, new Texture("Textures/enemy_front.png"));
             textures.Add(TextureName.SteuerberaterFront, new Texture("Textures/Steuerberater_Front.png"));
             textures.Add(TextureName.TriopsBack, new Texture("Textures/Triops_Back.png"));
             textures.Add(TextureName.TriopsFront, new Texture("Textures/Triops_Front.png"));
@@ -69,6 +70,7 @@ namespace PikachusPearls.Code
 
         public enum TextureName
         {
+            Enemy,
             WhitePixel,
             MainMenuBackground,
             PressEnter,
