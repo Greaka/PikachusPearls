@@ -102,8 +102,6 @@ namespace PikachusPearls.Code.GameStates.IngameElements
                 playerSprite.updateFrame(gameTime);
 
                 if (Math.Abs((((Vector2) playerSprite.Position - posOffset) - (((Vector2) actualTile + vector) * 64)).length) <= 1f)
-                //if ((Math.Abs((float) (((Vector2) playerSprite.Position - posOffset)/64f).X) - ((Vector2) actualTile + vector).X) <= 1/512f &&
-                    //(Math.Abs((float) (((Vector2) playerSprite.Position - posOffset)/64f).Y) - ((Vector2) actualTile + vector).Y) <= 1/512f)
                 {
                     actualTile = actualTile + (Vector2i) vector;
                     playerSprite.Position = (Vector2) actualTile * 64 + posOffset;
@@ -185,7 +183,18 @@ namespace PikachusPearls.Code.GameStates.IngameElements
         public Sprite Draw(RenderWindow win)
         {
             View v = win.GetView();
-            v.Center = playerSprite.Position - (Vector2f) posOffset;
+            v.Center = playerSprite.Position - (Vector2f)posOffset;
+            Vector2i centertile = (Vector2) v.Center/64;
+            var x = win.Size.X/64/2;
+            var y = win.Size.Y/64/2;
+            if (centertile.X < x)
+                v.Center = new Vector2f(x * 64, v.Center.Y);
+            if (centertile.Y < y + 1)
+                v.Center = new Vector2f(v.Center.X, (y + 1) * 64);
+            if (centertile.X > 256-x - 2)
+                v.Center = new Vector2f((256 - x - 1) * 64, v.Center.Y);
+            if (centertile.Y > 256-y - 3)
+                v.Center = new Vector2f(v.Center.X, (256 - y - 2) * 64);
             win.SetView(v);
             return playerSprite;
         }
