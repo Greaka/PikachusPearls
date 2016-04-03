@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SFML.Window;
 
 namespace PikachusPearls.Code.GameStates.IngameElements
 {
@@ -32,12 +33,7 @@ namespace PikachusPearls.Code.GameStates.IngameElements
             protected set
             {
                 _currentHp = value;
-                HpBar_Current.Transform.TransformRect(
-                    new FloatRect(
-                        HpBar_Current.Position.X, 
-                        HpBar_Current.Position.Y, 
-                        2 + (HpBar_Current.TextureRect.Width - 4) * CurrentHp / MaxHp, 
-                        HpBar_Current.Texture.Size.Y));
+                HpBar_Current.Scale = new Vector2f((2 + (HpBar_Current.TextureRect.Width - 4) * CurrentHp / MaxHp) / HpBar_Current.TextureRect.Width, 1);
             }
         }
 
