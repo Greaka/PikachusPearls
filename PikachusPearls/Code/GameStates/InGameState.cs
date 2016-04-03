@@ -41,15 +41,15 @@ namespace PikachusPearls.Code.GameStates
             switch (encountered)
             {
                 case Existing_Pearlmon.T_Rex:
-                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new T_Rex((uint)rnd.Next(1, 10)));
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new T_Rex((uint)rnd.Next(1, 10)));
                     break;
 
                 case Existing_Pearlmon.Knight:
-                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new Knight((uint)rnd.Next(1, 10)));
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new Knight((uint)rnd.Next(1, 10)));
                     break;
 
                 default:
-                    fightState.EnterState(AssetManager.TextureName.MainMenuBackground, player, new T_Rex(2));
+                    fightState.EnterState(AssetManager.TextureName.Attackscreen, player, new T_Rex(2));
                     break;
             }
         }
