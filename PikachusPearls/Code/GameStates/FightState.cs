@@ -102,6 +102,11 @@ namespace PikachusPearls.Code.GameStates
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.ItemsButton)),
                 new Sprite(AssetManager.getTexture(AssetManager.TextureName.RunButton))};
 
+            Menu[0].Position = Menubackground.Position;
+            Menu[1].Position = Menubackground.Position + new Vector2f(200, 0);
+            Menu[2].Position = Menubackground.Position + new Vector2f(0, 150);
+            Menu[3].Position = Menubackground.Position + new Vector2f(200, 150);
+
             SelectedShader = new Shader(null, "Shaders/SelectedShader.frag");
             SelectedState = new RenderStates(SelectedShader);
         }
@@ -114,17 +119,32 @@ namespace PikachusPearls.Code.GameStates
         /// <param name="enemy">the encountered enemy</param>
         public void EnterState(AssetManager.TextureName texture, Player player, Pearlmon enemy)
         {
-            if (!AssetManager.getTexture(texture).Equals(Background.Texture))
-                Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+            if (Background == null || !AssetManager.getTexture(texture).Equals(Background.Texture))
+            {
+                if (Background != null)
+                    Background.Dispose();
 
+                Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+                Background.Scale = new Vector2f(1280f / Background.Texture.Size.X, 720f / Background.Texture.Size.Y);
+            }
             State = EFightState.BeginAnimation;
             enemyMon = enemy;
             this.player = player;
             playersMon = player.GetFirstMon();
+
+            enemyMon.GetSprite().Position = new Vector2f((Background.Texture.Size.X * Background.Scale.X) / 2, 0);
+            playersMon.GetSprite().Position = new Vector2f(0, (Background.Texture.Size.Y * Background.Scale.Y) / 2);
+
+            enemyMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
+            playersMon.GetSprite().Scale = new Vector2f(0.5f, 0.5f);
         }
 
         public void Draw(RenderWindow win)
         {
+            View v = win.GetView();
+            v.Center = v.Size / 2;
+            win.SetView(v);
+
             win.Draw(Background);
             enemyMon.Draw(win);
             playersMon.Draw(win);
@@ -248,7 +268,9 @@ namespace PikachusPearls.Code.GameStates
                                 case Selected.Attack:
                                     EnterAttacks();
                                     break;
-
+                                case Selected.Run:
+                                    EndFight();
+                                    break;
                                 default:
                                     break;
                             }
@@ -338,6 +360,7 @@ namespace PikachusPearls.Code.GameStates
             selected = Selected.None;
             selectedAttack = SelectedAttack.None;
             selectedMenu = FetchMenu.None;
+            enemyMon.Dispose();
         }
     }
 }

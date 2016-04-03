@@ -256,8 +256,6 @@ namespace PikachusPearls.Code.GameStates
                 }
             }
 
-            //window.Draw(player);
-
             bool playerDrawn = false;
 
             for (int j = top; j < bottom; j++)
