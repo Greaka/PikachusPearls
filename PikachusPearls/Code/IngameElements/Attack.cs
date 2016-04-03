@@ -128,4 +128,24 @@ namespace PikachusPearls.Code.IngameElements
             Type = Typing.Type.Charisma;
         }
     }
+
+    public class RockTomb : Attack
+    {
+        public RockTomb()
+        {
+            Name = "Rock Tomb";
+            Strength = 70;
+            Type = Typing.Type.Strength;
+        }
+    }
+
+    public class RockSlide : Attack
+    {
+        public RockSlide()
+        {
+            Name = "Rock Slide";
+            Strength = 65;
+            Type = Typing.Type.Normal;
+        }
+    }
 }
