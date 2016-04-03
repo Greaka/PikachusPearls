@@ -232,7 +232,7 @@ namespace PikachusPearls.Code.GameStates
             Vector2 tpos = player.Position + new Vector2f(0, 48);
             tpos = tpos / 64;
 
-            int y = (int)(tpos.Y + 0.75f);
+            int y = (int)(tpos.Y + 0.5f);
 
             int viewLeft = (int)(window.GetView().Size.X / 128 + 2);
             int viewBottom = (int)(window.GetView().Size.Y / 128 + 2);
